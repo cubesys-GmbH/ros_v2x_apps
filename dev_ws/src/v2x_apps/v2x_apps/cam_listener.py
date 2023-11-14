@@ -8,6 +8,7 @@ class CamListener(Node):
 
     def __init__(self):
         super().__init__('cam_listener')
+        self.get_logger().info(f'Node "{self.get_name()}" started')
         self.subscription = self.create_subscription(
             CAM,
             '/cam_received',
@@ -16,7 +17,7 @@ class CamListener(Node):
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
-        self.get_logger().info('I heard CAM: "%s"' % msg.data)
+        self.get_logger().info('I heard CAM: "%s"' % msg)
 
 
 def main(args=None):
