@@ -1,2 +1,2 @@
-# ros_sample_app
-ROS2 Sample Application
+# V2X Applications
+
