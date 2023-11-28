@@ -1,23 +1,38 @@
 # CUBE devcontainer
 FROM ghcr.io/cubesys-gmbh/workspace:humble
 SHELL ["/bin/bash", "-c"]
+
+# Change user
 USER root
 
-# install system packages
+# Install system packages
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y install --no-install-recommends \
     pip \
     git
 
+ARG USERNAME="cube"
+ARG USER_HOME_DIR=/home/${USERNAME}
+
+WORKDIR ${USER_HOME_DIR}/tmp
+
+# Workaround for Python nodes 
 COPY requirements.txt ./
 RUN pip install -U pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-ARG USERNAME="cube"
-ARG USER_HOME_DIR=/home/${USERNAME}
-USER ${USERNAME}
-#RUN mkdir ${USER_HOME_DIR}/apps
+# Debian packages
+COPY deb/ ./
+RUN dpkg -i *.deb
 
-# setup entrypoint
+# Remove tmp
+WORKDIR ${USER_HOME_DIR}
+RUN rm -rf tmp
+
+
+# Change user
+USER ${USERNAME}
+
+# Setup entrypoint
 COPY ./entrypoint.bash /
 
 ENTRYPOINT ["/entrypoint.bash"]

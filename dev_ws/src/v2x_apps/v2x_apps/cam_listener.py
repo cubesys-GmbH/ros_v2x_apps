@@ -1,11 +1,10 @@
 import rclpy
-from rclpy.node import Node
 
+from rclpy.node import Node
 from etsi_its_msgs.msg import CAM
 
 
 class CamListener(Node):
-
     def __init__(self):
         super().__init__('cam_listener')
         self.get_logger().info(f'Node "{self.get_name()}" started')
@@ -22,9 +21,7 @@ class CamListener(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-
     cam_listener = CamListener()
-    
     rclpy.spin(cam_listener)
 
     # Destroy the node explicitly
