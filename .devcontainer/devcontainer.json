@@ -26,14 +26,12 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"jeff-hykin.better-cpp-syntax",
 				"ms-vscode.cmake-tools",
 				"ms-vscode.cpptools",
 				"twxs.cmake",
 				"dotjoshjohnson.xml",
 				"ms-azuretools.vscode-docker",
 				"ms-python.python",
-				"redhat.vscode-yaml",
 				"smilerobotics.urdf",
 				"yzhang.markdown-all-in-one",
 				"ms-vscode.cpptools-extension-pack",

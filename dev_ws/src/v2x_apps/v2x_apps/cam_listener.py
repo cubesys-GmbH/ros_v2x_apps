@@ -10,13 +10,13 @@ class CamListener(Node):
         self.get_logger().info(f'Node "{self.get_name()}" started')
         self.subscription = self.create_subscription(
             CAM,
-            '/cam_received',
+            '/vanetza/cam_received',
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
 
-    def listener_callback(self, msg):
-        self.get_logger().info('I heard CAM: "%s"' % msg)
+    def listener_callback(self, msg: CAM) -> None:
+        self.get_logger().info(f"I heard CAM from Station Id: {msg.its_header.station_id}")
 
 
 def main(args=None):

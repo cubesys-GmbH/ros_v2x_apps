@@ -5,6 +5,8 @@
   <version>1.0.0</version>
   <description>Sample V2X Application</description>
   <author email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</author>
+  <maintainer email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</maintainer>
+  <license>None</license>
   <depend>rclpy</depend>
   <export>
     <build_type>ament_python</build_type>
