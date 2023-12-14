@@ -16,7 +16,6 @@ setup(
     maintainer='Apostolos Georgiadis',
     maintainer_email='apostolos.georgiadis@nfiniity.com',
     description='Sample V2X Application',
-    license='MIT',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
