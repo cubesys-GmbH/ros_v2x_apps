@@ -13,7 +13,6 @@ class CamListener(Node):
             '/vanetza/cam_received',
             self.listener_callback,
             10)
-        self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg: CAM) -> None:
         self.get_logger().info(f"I heard CAM from Station Id: {msg.its_header.station_id}")
@@ -23,10 +22,6 @@ def main(args=None):
     rclpy.init(args=args)
     cam_listener = CamListener()
     rclpy.spin(cam_listener)
-
-    # Destroy the node explicitly
-    # (optional - otherwise it will be done automatically
-    # when the garbage collector destroys the node object)
     cam_listener.destroy_node()
     rclpy.shutdown()
 
