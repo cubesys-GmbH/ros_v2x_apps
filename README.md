@@ -13,3 +13,30 @@ The *cube-its* is a collection of software tools, ROS 2 nodes and components and
 The sample application features a simple ROS 2 node named *cam_listener* as shown figure 1. This node listens for received CAMs transmitted through the designated published topic "/vanetza/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of our project's functionality.
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
+
+## Build project
+
+You likely already have open the devcontainer project with Visual Studio Code. 
+Navigate to the root of the workspace, dev_ws:
+
+```
+cd dev_ws
+```
+
+Build application by:
+
+```
+colcon build --packages-select v2x_apps
+```
+
+Still in the same terminal, source the setup files:
+
+```
+source install/setup.bash
+```
+
+Now run the cam_listener node:
+
+```
+ros2 run v2x_apps cam_listener
+```
