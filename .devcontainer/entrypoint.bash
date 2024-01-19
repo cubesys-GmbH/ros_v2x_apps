@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-# setup cube environment
-source "/home/cube/scripts/cube.bash"
+# source ROS 2 environment
+source "/opt/ros/humble/setup.bash"
 exec "$@"
