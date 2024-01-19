@@ -10,6 +10,6 @@ The cube-its is a collection of software tools, ROS 2 nodes and components and t
 
 ![Figure 1 - Project overview](images/cam_listener.png)
 
-The sample application features a simple ROS 2 node named "cam_listener" as shown figure 1. This node listens for received CAMs transmitted through the designated published topic "/vanetza/cam_received" by cube-its. The cube-its framework handles the publication of received CAM data, while the "cam_listener" node is configured to subscribe to this specific topic. This configuration enables the "cam_listener" node to efficiently receive and process the CAM data, showcasing a fundamental aspect of our project's functionality.
+The sample application features a simple ROS 2 node named *cam_listener* as shown figure 1. This node listens for received CAMs transmitted through the designated published topic "/vanetza/cam_received" by cube-its. The cube-its framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of our project's functionality.
 
-The "cam_listener" node operates within a Docker container, similar to the cube-its. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
+The *cam_listener* node operates within a Docker container, similar to the cube-its. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
