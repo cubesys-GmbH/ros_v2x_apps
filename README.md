@@ -1,6 +1,6 @@
 # Introduction
 
-This project shows how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* in a ROS 2 (Robot Operating System)[ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
+This project shows how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* in a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
 
 ROS 2 is known as an advanced middleware for creating software for self-driving robots and even autonomous vehicles. It has a decentralized setup with nodes handling specific tasks, such as processing data from a single sensor etc. Since we will be working with ROS, it makes sense to get familiar with the environment and features of ROS.
 
