@@ -13,8 +13,8 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='Apostolos Georgiadis',
-    maintainer_email='apostolos.georgiadis@nfiniity.com',
+    maintainer='YourName',
+    maintainer_email='you@mail.com',
     description='Sample V2X Application',
     tests_require=['pytest'],
     entry_points={

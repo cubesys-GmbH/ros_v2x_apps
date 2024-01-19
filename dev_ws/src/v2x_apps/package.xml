@@ -4,8 +4,8 @@
   <name>v2x_apps</name>
   <version>1.0.0</version>
   <description>Sample V2X Application</description>
-  <author email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</author>
-  <maintainer email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</maintainer>
+  <author email="you@mail.com">Your Name</author>
+  <maintainer email="you@mail.com">Your Name</maintainer>
   <license>None</license>
   <depend>rclpy</depend>
   <export>
