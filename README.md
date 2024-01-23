@@ -6,7 +6,7 @@ ROS 2 is known as an advanced middleware for creating software for self-driving 
 
 The *cube-its* is a collection of software tools, ROS 2 nodes and components and that provide functionalities for V2X (Vehicle-to-Everything) services, including facilities like CAMs (Cooperative Awareness Messages), DENMs (Decentralized Environmental Notification Messages), CPMs (Connection Protection Messages) and more. Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
 
-## Project overview
+# Project overview
 
 ![Figure 1 - Project overview](images/cam_listener.png)
 
@@ -33,7 +33,7 @@ export ROS_DOMAIN_ID=45
 
 More information about domain ID can be found here: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html
 
-## Build and run project
+# Build and run project
 
 You likely already have open the devcontainer project with VSCode (Visual Studio Code). 
 If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
