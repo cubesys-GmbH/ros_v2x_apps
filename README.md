@@ -14,9 +14,11 @@ The sample application features a simple ROS 2 node named *cam_listener* as show
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
-## Set ROS domain 
+## Node visibility 
 
-By setting *ROS_LOCALHOST_ONLY=0* enables *cam_listener* and *cube_its* to share the same domain (default: *ROS_DOMAIN_ID=42*) by simply typing in a terminal: 
+By default *ROS_LOCALHOST_ONLY* is set to 1, which means that *cube-its*, its topics, services, and actions will not be visible to other computers on the local network. 
+By setting *ROS_LOCALHOST_ONLY=0* enables *cam_listener* and *cube_its* to discover each other, if they share the same domain (default: *ROS_DOMAIN_ID=42*).
+You can simply disable the localhost only setting by typing in a terminal: 
 
 ```
 export ROS_LOCALHOST_ONLY=0
@@ -28,6 +30,8 @@ In the same way, you can also set the domain to a different value:
 ```
 export ROS_DOMAIN_ID=45
 ```
+
+More information about domain ID can be found here: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html
 
 ## Build and run project
 
