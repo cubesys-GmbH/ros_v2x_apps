@@ -14,7 +14,7 @@ The sample application features a simple ROS 2 node named *cam_listener* as show
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
-## Set domain 
+## Set ROS domain 
 
 By setting *ROS_LOCALHOST_ONLY=0* enables *cam_listener* and *cube_its* to share the same domain (default: *ROS_DOMAIN_ID=42*) by simply typing in a terminal: 
 
