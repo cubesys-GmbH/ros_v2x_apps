@@ -28,14 +28,7 @@
 			"extensions": [
 				"ms-vscode.cmake-tools",
 				"ms-vscode.cpptools",
-				"twxs.cmake",
-				"dotjoshjohnson.xml",
-				"ms-azuretools.vscode-docker",
-				"ms-python.python",
-				"smilerobotics.urdf",
-				"yzhang.markdown-all-in-one",
-				"ms-vscode.cpptools-extension-pack",
-				"github.vscode-github-actions"
+				"ms-vscode.cpptools-extension-pack"
 			]
 		},
 		"settings": {
