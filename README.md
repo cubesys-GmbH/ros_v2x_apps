@@ -1,4 +1,4 @@
-# Introduction
+# Develop and run a sample application for CUBE EVK
 
 This project shows how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* in a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
 
