@@ -13,13 +13,13 @@ The *cube-its* is a collection of software tools, ROS 2 nodes and components and
 
 ![Figure 1 - Project overview](images/cam_listener.png)
 
-The sample application features a simple ROS 2 node named *cam_listener* as shown in figure 1. This node listens for received CAMs transmitted through the designated published topic "/vanetza/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of our project's functionality.
+The sample application features a simple ROS 2 node named *cam_listener* as shown in figure 1. This node listens for received CAMs transmitted through the designated published topic "/vanetza/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
 ## Node visibility 
 
-By default *ROS_LOCALHOST_ONLY* is set to 1, which means that *cube-its*, its topics, services, and actions will not be visible to other computers on the local network. 
+By default *ROS_LOCALHOST_ONLY* is set to 1, which means that *cube-its*, its topics, services, and actions will not be visible to other ROS 2 environments on the local network. 
 By setting *ROS_LOCALHOST_ONLY=0* enables *cam_listener* and *cube_its* to discover each other, if they share the same domain (default: *ROS_DOMAIN_ID=42*).
 You can simply disable the localhost only setting by typing in a terminal: 
 
