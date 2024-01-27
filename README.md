@@ -28,6 +28,7 @@ export ROS_LOCALHOST_ONLY=0
 ```
 
 In other words, they are part of the same ROS 2 environment, and the *cam_listener* node can now access to all services and topics of the *cube-its*.
+
 In the same way, you can also set the domain to a different value:
 
 ```
