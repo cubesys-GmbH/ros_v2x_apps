@@ -5,21 +5,11 @@
 	},
 	"runArgs": [
 		"--init",
-		"--privileged",
-		"--security-opt",
-		"seccomp=unconfined",
-		"--net=host",
-		"--ipc=host",
-		"--device=/dev/ttyACM0",
-		"--device=/dev/video0:/dev/video0"
+		"--network=host"
 	],
-	"containerEnv": {
-		"DISPLAY": "${env:DISPLAY}"
-	},
 	// Mount bash history
 	"mounts": [
-		"source=projectname-bashhistory,target=/commandhistory,type=volume",
-		"source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached"
+		"source=projectname-bashhistory,target=/commandhistory,type=volume"
 	],
 	"workspaceMount": "source=${localWorkspaceFolder},target=/home/cube/cube-its,type=bind",
 	"workspaceFolder": "/home/cube/cube-its",
@@ -33,9 +23,7 @@
 		},
 		"settings": {
 			"terminal.integrated.shell.linux": "/bin/bash",
-			"terminal.integrated.shellArgs.linux": [
-				"-l"
-			]
+			"terminal.integrated.shellArgs.linux": ["--login"]
 		}
 	}
 }
