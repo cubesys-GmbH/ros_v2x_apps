@@ -19,6 +19,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+                'btp_listener = v2x_apps.btp_listener:main',
                 'cam_listener = v2x_apps.cam_listener:main',
         ],
 },
