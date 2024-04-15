@@ -1,7 +1,7 @@
 import rclpy
 
 from rclpy.node import Node
-from etsi_its_msgs.msg import CAM
+from etsi_its_cam_msgs.msg import CAM
 
 
 class CamListener(Node):
@@ -15,7 +15,7 @@ class CamListener(Node):
             10)
 
     def listener_callback(self, msg: CAM) -> None:
-        self.get_logger().info(f"I heard CAM from Station Id: {msg.its_header.station_id}")
+        self.get_logger().info(f"I heard CAM from Station Id: {msg.header.station_id.value}")
 
 
 def main(args=None):
