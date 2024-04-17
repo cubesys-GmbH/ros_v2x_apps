@@ -13,9 +13,9 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='YourName',
-    maintainer_email='you@mail.com',
-    description='Sample V2X Application',
+    maintainer='Apostolos Georgiadis',
+    maintainer_email='apostolos.georgiadis@nfiniity.com',
+    description='Collection of Exemplary V2X Applications Engaging CUBE Devices',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
