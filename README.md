@@ -78,9 +78,9 @@ The *cam_listener* is now waiting for a received CAM message by *cube-its*.
 When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 
 ```
-[INFO] [1706013095.341824275] [cam_listener]: I heard CAM from Station Id: 84281098
-[INFO] [1706013096.345854233] [cam_listener]: I heard CAM from Station Id: 84281098
-[INFO] [1706013097.345731609] [cam_listener]: I heard CAM from Station Id: 84281098
-[INFO] [1706013098.345113236] [cam_listener]: I heard CAM from Station Id: 84281098
-[INFO] [1706013099.344528362] [cam_listener]: I heard CAM from Station Id: 84281098
+[INFO] [1706013095.341824275] [cam_listener]: Received CAM from Station Id: 84281098
+[INFO] [1706013096.345854233] [cam_listener]: Received CAM from Station Id: 84281098
+[INFO] [1706013097.345731609] [cam_listener]: Received CAM from Station Id: 84281098
+[INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
+[INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
 ```

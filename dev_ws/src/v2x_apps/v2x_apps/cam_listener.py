@@ -15,7 +15,7 @@ class CamListener(Node):
             10)
 
     def listener_callback(self, msg: CAM) -> None:
-        self.get_logger().info(f"I heard CAM from Station Id: {msg.header.station_id.value}")
+        self.get_logger().info(f"Received CAM from Station Id: {msg.header.station_id.value}")
 
 
 def main(args=None):
