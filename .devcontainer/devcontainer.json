@@ -5,7 +5,9 @@
 	},
 	"runArgs": [
 		"--init",
-		"--network=host"
+		"--network=host",
+		"--ulimit",
+		"nofile=1024"
 	],
 	// Mount bash history
 	"mounts": [
@@ -23,7 +25,9 @@
 		},
 		"settings": {
 			"terminal.integrated.shell.linux": "/bin/bash",
-			"terminal.integrated.shellArgs.linux": ["--login"]
+			"terminal.integrated.shellArgs.linux": [
+				"--login"
+			]
 		}
 	}
 }
