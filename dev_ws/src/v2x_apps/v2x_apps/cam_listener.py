@@ -10,7 +10,7 @@ class CamListener(Node):
         self.get_logger().info(f'Node "{self.get_name()}" started')
         self.subscription = self.create_subscription(
             CAM,
-            '/vanetza/cam_received',
+            '/its/cam_received',
             self.listener_callback,
             10)
 
