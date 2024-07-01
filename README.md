@@ -9,7 +9,7 @@ The *cube-its* is a collection of software tools, ROS 2 nodes and components and
 ## Prerequisites
 - [CUBE EVK](https://www.nfiniity.com/#portfolio) running the *cube-its* framework 
   
-# Project overview
+# Project overview "cam_listener"
 
 ![Figure 1 - Project overview](images/cam_listener.png)
 
