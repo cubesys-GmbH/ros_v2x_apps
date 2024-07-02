@@ -7,7 +7,7 @@ ROS 2 is known as an advanced middleware for creating software for self-driving 
 The *cube-its* is a collection of software tools, ROS 2 nodes and components and that provide functionalities for V2X (Vehicle-to-Everything) services, including facilities like CAMs (Cooperative Awareness Messages), DENMs (Decentralized Environmental Notification Messages), CPMs (Connection Protection Messages) and more. Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
 
 ## Prerequisites
-- [CUBE EVK](https://www.nfiniity.com/#portfolio) running the *cube-its* framework 
+- [cube:evk](https://www.nfiniity.com/#portfolio) running the *cube-its* framework 
   
 # Project overview "cam_listener"
 
