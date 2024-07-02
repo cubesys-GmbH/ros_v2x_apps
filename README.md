@@ -10,19 +10,8 @@ ROS 2 is known as an advanced middleware for creating software for self-driving 
 
 The *cube-its* is a collection of software tools, ROS 2 nodes and components and that provide functionalities for V2X (Vehicle-to-Everything) services, including facilities like CAMs (Cooperative Awareness Messages), DENMs (Decentralized Environmental Notification Messages), CPMs (Connection Protection Messages) and more. Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
 
-## Prerequisites
-- [cube:evk](https://www.nfiniity.com/#portfolio) running the *cube-its* framework 
-  
-# Project overview "cam_listener"
-
-![Figure 1 - Project overview](images/cam_listener.png)
-
-The sample application features a simple ROS 2 node named *cam_listener* as shown in figure 1. This node listens for received CAMs transmitted through the designated published topic "/vanetza/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
-
-The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
-
-## Node visibility 
-
+### Node visibility 
+In order to run ROS 2 nodes in the same ROS 2 environment, ROS 2 introduces a domain mechanism.
 By default *ROS_LOCALHOST_ONLY* is set to 1, which means that *cube-its*, its topics, services, and actions will not be visible to other ROS 2 environments on the local network. 
 By setting *ROS_LOCALHOST_ONLY=0* enables *cam_listener* and *cube_its* to discover each other, if they share the same domain (default: *ROS_DOMAIN_ID=42*).
 You can simply disable the localhost only setting by typing in a terminal: 
@@ -40,6 +29,17 @@ export ROS_DOMAIN_ID=45
 ```
 
 More information about domain ID can be found here: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html
+
+## Prerequisites
+- [cube:evk](https://www.nfiniity.com/#portfolio) running the *cube-its* framework 
+  
+# Project overview "cam_listener"
+
+![Figure 1 - Project overview](images/cam_listener.png)
+
+The sample application features a simple ROS 2 node named *cam_listener* as shown in figure 1. This node listens for received CAMs transmitted through the designated published topic "/vanetza/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
+
+The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
 # Build and run project
 
