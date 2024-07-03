@@ -13,14 +13,14 @@ The *cube-its* is a collection of software tools, ROS 2 nodes and components and
 ### Node visibility 
 In order to run ROS 2 nodes in the same ROS 2 environment, ROS 2 introduces a domain mechanism.
 By default *ROS_LOCALHOST_ONLY* is set to 1, which means that *cube-its*, its topics, services, and actions will not be visible to other ROS 2 environments on the local network. 
-By setting *ROS_LOCALHOST_ONLY=0* enables *cam_listener* and *cube_its* to discover each other, if they share the same domain (default: *ROS_DOMAIN_ID=42*).
+By setting *ROS_LOCALHOST_ONLY=0* enables ROS 2 nodes from v2x_apps and *cube_its* to discover each other, if they share the same domain (default: *ROS_DOMAIN_ID=42*).
 You can simply disable the localhost only setting by typing in a terminal: 
 
 ```
 export ROS_LOCALHOST_ONLY=0
 ```
 
-In other words, they are part of the same ROS 2 environment, and the *cam_listener* node can now access to all services and topics of the *cube-its*.
+In other words, they are part of the same ROS 2 environment, and the ROS 2 nodes from v2x_apps can now access to all services and topics of the *cube-its*.
 
 In the same way, it's possible to set the domain to a different value:
 
@@ -31,7 +31,7 @@ export ROS_DOMAIN_ID=45
 More information about domain ID can be found here: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html
 
 ## Prerequisites
-- [cube:evk](https://www.nfiniity.com/#portfolio) running the *cube-its* framework 
+- [cube:evk or cube:micro OBU](https://www.nfiniity.com/#portfolio) running the *cube-its* framework 
   
 # Project overview "cam_listener"
 
