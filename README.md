@@ -89,9 +89,9 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 
 ![Figure 2 - Project overview](images/denm_node.png)
 
-The sample application features a simple ROS 2 node named *cam_listener* as shown in figure 2. This node listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
-
-The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
+The ROS 2 node named DenmNode is responsible for transmitting and receiving Decentralized Environmental Notification Messages (DENMs) over cube-its. 
+The node subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
+Additionally, it periodically generates and transmits DENMs based on the current position.
 
 ## Build and run project
 
