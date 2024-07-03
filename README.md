@@ -89,7 +89,7 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 
 ![Figure 2 - Project overview](images/denm_node.png)
 
-The ROS 2 node named DenmNode is responsible for transmitting and receiving DENMs over *cube-its*. 
+The *denm_node* is responsible for transmitting and receiving DENMs over *cube-its*. 
 The node subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
 Additionally, it periodically generates and transmits DENMs based on the current position.
 
