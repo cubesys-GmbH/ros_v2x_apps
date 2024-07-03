@@ -32,6 +32,7 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
 
 ## Prerequisites
 - [cube:evk](https://www.nfiniity.com/#portfolio) or [cube:micro OBU](https://www.nfiniity.com/#portfolio) running the *cube-its* framework
+- You likely already have open the devcontainer project with VSCode (Visual Studio Code). If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
   
 # Project overview "cam_listener"
 
@@ -42,10 +43,6 @@ The sample application features a simple ROS 2 node named *cam_listener* as show
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
 ## Build and run project
-
-You likely already have open the devcontainer project with VSCode (Visual Studio Code). 
-If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
-
 
 Navigate to the root of the workspace, dev_ws:
 
@@ -97,10 +94,6 @@ The sample application features a simple ROS 2 node named *cam_listener* as show
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
 ## Build and run project
-
-You likely already have open the devcontainer project with VSCode (Visual Studio Code). 
-If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
-
 
 Navigate to the root of the workspace, dev_ws:
 
