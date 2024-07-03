@@ -41,7 +41,7 @@ The sample application features a simple ROS 2 node named *cam_listener* as show
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
-# Build and run project
+## Build and run project
 
 You likely already have open the devcontainer project with VSCode (Visual Studio Code). 
 If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
@@ -87,4 +87,41 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 [INFO] [1706013097.345731609] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
+```
+# Project overview "denm_node"
+
+![Figure 2 - Project overview](images/denm_node.png)
+
+The sample application features a simple ROS 2 node named *cam_listener* as shown in figure 2. This node listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
+
+The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
+
+## Build and run project
+
+You likely already have open the devcontainer project with VSCode (Visual Studio Code). 
+If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
+
+
+Navigate to the root of the workspace, dev_ws:
+
+```
+cd dev_ws
+```
+
+Build application by:
+
+```
+colcon build --packages-select v2x_apps
+```
+
+Still in the same terminal, source the setup files:
+
+```
+source install/setup.bash
+```
+
+Now run the denm_node:
+
+```
+ros2 run v2x_apps denm_node
 ```
