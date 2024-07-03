@@ -1,4 +1,4 @@
-# Develop and run a sample application for cube:evk
+# Develop and run a sample application for 'cube:devices'
 
 This project shows how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* in a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
 
@@ -31,7 +31,7 @@ export ROS_DOMAIN_ID=45
 More information about domain ID can be found here: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html
 
 ## Prerequisites
-- [cube:evk or cube:micro OBU](https://www.nfiniity.com/#portfolio) running the *cube-its* framework 
+- [cube:evk](https://www.nfiniity.com/#portfolio) or [cube:micro OBU](https://www.nfiniity.com/#portfolio) running the *cube-its* framework
   
 # Project overview "cam_listener"
 
