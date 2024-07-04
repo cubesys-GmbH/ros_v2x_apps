@@ -1,6 +1,6 @@
 # Develop and run a sample application for cube-its
 
-This project shows how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* in a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
+This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
 
 ## cube-its
 
@@ -89,8 +89,16 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 
 ![Figure 2 - Project overview](images/denm_node.png)
 
-The *denm_node*, shown in figure 2, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates */its/position_vector* and received DENMs */its/denm_received* and uses a service call */its/den_request* to request the transmission of DENMs. 
+The *denm_node*, shown in figure 2, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
 Additionally, it periodically generates and transmits DENMs based on the current position.
+
+## Subscriptions and Services
+**Subscriptions:**
+- **/its/position_vector:** The denm_node subscribes to this topic to receive regular updates about the current position.
+- **/its/denm_received:** This subscription allows the *denm_node* to receive incoming DENMs from other V2X capable stations. By processing these messages, the node can react to various environmental events and updates.
+
+**Services:**
+- **/its/den_request:** The *denm_node* can use this service to request the transmission of a DENM. This is likely an on-demand feature, where a specific condition or event triggers the need to send a DENM immediately. Here, in this example the transmission is called periodically.
 
 ## Build and run project
 
