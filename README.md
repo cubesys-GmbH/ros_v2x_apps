@@ -97,7 +97,7 @@ Additionally, it periodically generates and transmits DENMs based on the current
 - **/its/position_vector:** The denm_node subscribes to this topic to receive regular updates about the current position.
 - **/its/denm_received:** This subscription allows the *denm_node* to receive incoming DENMs from other V2X capable stations. By processing these messages, the node can react to various environmental events and updates.
 
-**Service Call:**
+**Services:**
 - **/its/den_request:** The *denm_node* can use this service to request the transmission of a DENM. This is likely an on-demand feature, where a specific condition or event triggers the need to send a DENM immediately. Here, in this example the transmission is called periodically.
 
 ## Build and run project
