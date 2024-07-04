@@ -32,20 +32,17 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
 
 ## Prerequisites
 - [cube:evk](https://www.nfiniity.com/#portfolio) or [cube:micro OBU](https://www.nfiniity.com/#portfolio) running the *cube-its* framework
+- You likely already have worked with devcontainer projects in VSCode (Visual Studio Code). If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
   
-# Project overview "cam_listener"
+# Project "cam_listener"
 
 ![Figure 1 - Project overview](images/cam_listener.png)
 
-The sample application features a simple ROS 2 node named *cam_listener* as shown in figure 1. This node listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
+The *cam_listener*, as shown in figure 1, listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
 ## Build and run project
-
-You likely already have open the devcontainer project with VSCode (Visual Studio Code). 
-If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
-
 
 Navigate to the root of the workspace, dev_ws:
 
@@ -88,19 +85,14 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 [INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
 ```
-# Project overview "denm_node"
+# Project "denm_node"
 
 ![Figure 2 - Project overview](images/denm_node.png)
 
-The sample application features a simple ROS 2 node named *cam_listener* as shown in figure 2. This node listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
-
-The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
+The *denm_node*, shown in figure 2, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
+Additionally, it periodically generates and transmits DENMs based on the current position.
 
 ## Build and run project
-
-You likely already have open the devcontainer project with VSCode (Visual Studio Code). 
-If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
-
 
 Navigate to the root of the workspace, dev_ws:
 
