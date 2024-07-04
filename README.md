@@ -92,6 +92,12 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 The *denm_node*, shown in figure 2, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates */its/position_vector* and received DENMs */its/denm_received* and uses a service call */its/den_request* to request the transmission of DENMs. 
 Additionally, it periodically generates and transmits DENMs based on the current position.
 
+Subscriptions and Services
+
+    Subscriptions:
+        /its/position_vector: The denm_node subscribes to this topic to receive regular updates about the current position. This could be from a GPS module or another positioning system. By knowing its current location, the node can make informed decisions about when and where to send notifications.
+        /its/denm_received: This subscription allows the denm_node to receive incoming DENMs from other nodes. By processing these messages, the node can react to various environmental events and updates shared by other nodes in the network.
+
 ## Build and run project
 
 Navigate to the root of the workspace, dev_ws:
