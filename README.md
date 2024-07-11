@@ -4,7 +4,26 @@ This repository provides examples demonstrating how to develop and run your own 
 
 ## cube-its
 
-The *cube-its* is a collection of software tools, ROS 2 nodes and components and that provide functionalities for V2X (Vehicle-to-Everything) services, including facilities like CAMs (Cooperative Awareness Messages), DENMs (Decentralized Environmental Notification Messages), CPMs (Connection Protection Messages) and more. Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
+The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks within a ROS environment.
+It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the [Vanetza](https://www.vanetza.org/) library.
+Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
+
+![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png)
+
+### GNSS
+The *GNSS* component provides accurate global positioning data for the system. It reads data from GNSS receiver and provides the position, velocity, and time information.
+
+### Kinematics
+The *Kinematics* computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration.
+
+### I/O
+The *I/O* components handles sensor inputs and actuator outputs. It processes data from various sensors or intefaces such as CAN (Controller Area Network).
+
+### ITS Facilities
+The *ITS Facilities* provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
+
+### Vanetza
+The *Vanetza* node facilitates V2X communication by implementing the **ETSI ITS-G5** protocol for vehicle and infrastructure communication.
 
 ## ROS 2
 
@@ -36,9 +55,9 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
   
 # Project "cam_listener"
 
-![Figure 1 - Project overview](images/cam_listener.png)
+![Figure 2 - Project overview](images/cam_listener.png)
 
-The *cam_listener*, as shown in figure 1, listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
+The *cam_listener*, as shown in figure 2, listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
@@ -87,9 +106,9 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 ```
 # Project "denm_node"
 
-![Figure 2 - Project overview](images/denm_node.png)
+![Figure 3 - Project overview](images/denm_node.png)
 
-The *denm_node*, shown in figure 2, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
+The *denm_node*, shown in figure 3, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
 Additionally, it periodically generates and transmits DENMs based on the current position.
 
 ## Subscriptions and Services
