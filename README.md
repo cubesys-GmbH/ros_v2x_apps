@@ -55,9 +55,9 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
   
 # Project "cam_listener"
 
-![Figure 1 - Project overview](images/cam_listener.png)
+![Figure 2 - Project overview](images/cam_listener.png)
 
-The *cam_listener*, as shown in figure 1, listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
+The *cam_listener*, as shown in figure 2, listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
@@ -106,9 +106,9 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 ```
 # Project "denm_node"
 
-![Figure 2 - Project overview](images/denm_node.png)
+![Figure 3 - Project overview](images/denm_node.png)
 
-The *denm_node*, shown in figure 2, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
+The *denm_node*, shown in figure 3, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
 Additionally, it periodically generates and transmits DENMs based on the current position.
 
 ## Subscriptions and Services
