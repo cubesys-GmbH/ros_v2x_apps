@@ -5,7 +5,7 @@ This repository provides examples demonstrating how to develop and run your own 
 ## cube-its
 
 The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks.
-It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the Vanetza library.
+It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the [Vanetza](https://www.vanetza.org/) library.
 Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
 
 ![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png)
