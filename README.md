@@ -4,7 +4,7 @@ This repository provides examples demonstrating how to develop and run your own 
 
 ## cube-its
 
-The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks.
+The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks within a ROS environment.
 It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the [Vanetza](https://www.vanetza.org/) library.
 Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
 
@@ -14,16 +14,16 @@ Additionally, *cube-its* can serve as a platform for development, deployment and
 The *GNSS* component provides accurate global positioning data for the system. It reads data from GNSS receiver and provides the position, velocity, and time information.
 
 ### Kinematics
-The *Kinematics* component computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration.
+The *Kinematics* computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration.
 
 ### I/O
-The *I/O* component handles sensor inputs and actuator outputs. It processes data from various sensors or intefaces such as CAN (Controller Area Network).
+The *I/O* components handles sensor inputs and actuator outputs. It processes data from various sensors or intefaces such as CAN (Controller Area Network).
 
 ### ITS Facilities
-The *ITS Facilities* components provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
+The *ITS Facilities* provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
 
 ### Vanetza
-The *Vanetza* node facilitates V2X communication by implementing the ETSI ITS-G5 protocol for vehicle and infrastructure communication.
+The *Vanetza* node facilitates V2X communication by implementing the **ETSI ITS-G5** protocol for vehicle and infrastructure communication.
 
 ## ROS 2
 
