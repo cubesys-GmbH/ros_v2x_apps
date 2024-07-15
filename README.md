@@ -27,6 +27,9 @@ The *ITS Facilities* provides services and functionalities for intelligent trans
 #### Vanetza
 The *Vanetza* node facilitates V2X communication by implementing the **ETSI ITS-G5** protocol for vehicle and infrastructure communication.
 
+### Supported ETSI ITS messages
+
+
 ## ROS 2
 
 ROS 2 is known as an advanced middleware for creating software for self-driving robots and even autonomous vehicles. It has a decentralized setup with nodes handling specific tasks, such as processing data from a single sensor etc. Since we will be working with ROS, it makes sense to get familiar with the environment and features of ROS.
