@@ -19,7 +19,7 @@ The *GNSS* component provides accurate global positioning data for the system. I
 The *Kinematics* computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration.
 
 #### I/O
-The *I/O* components handles sensor inputs and actuator outputs. It processes data from various sensors or intefaces such as CAN (Controller Area Network).
+The *I/O* components handle sensor inputs and actuator outputs. It processes data from various sensors or interfaces such as CAN (Controller Area Network).
 
 #### ITS Facilities
 The *ITS Facilities* provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
