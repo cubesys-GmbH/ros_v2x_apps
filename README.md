@@ -69,7 +69,7 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
   
 # Project "cam_listener"
 
-![Figure 2 - Project cam_listener](images/cam_listener.png "Figure 2 - Overview cam_listener")
+![Figure 2 - Project cam_listener](images/cam_listener.png "Figure 2 - Project cam_listener")
 
 The *cam_listener*, as shown in figure 2, listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
 
