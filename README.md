@@ -2,7 +2,7 @@
 
 This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
 
-## cube-its
+## cube-its <img src="https://img.shields.io/badge/ROS 2-humble-blue"/>
 
 The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks within a ROS 2 environment.
 It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the [Vanetza](https://www.vanetza.org/) library.
