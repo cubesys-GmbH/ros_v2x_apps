@@ -10,19 +10,21 @@ Additionally, *cube-its* can serve as a platform for development, deployment and
 
 ![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
 
-### GNSS
+### Component description 
+
+#### GNSS
 The *GNSS* component provides accurate global positioning data for the system. It reads data from GNSS receiver and provides the position, velocity, and time information.
 
-### Kinematics
+#### Kinematics
 The *Kinematics* computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration.
 
-### I/O
+#### I/O
 The *I/O* components handles sensor inputs and actuator outputs. It processes data from various sensors or intefaces such as CAN (Controller Area Network).
 
-### ITS Facilities
+#### ITS Facilities
 The *ITS Facilities* provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
 
-### Vanetza
+#### Vanetza
 The *Vanetza* node facilitates V2X communication by implementing the **ETSI ITS-G5** protocol for vehicle and infrastructure communication.
 
 ## ROS 2
