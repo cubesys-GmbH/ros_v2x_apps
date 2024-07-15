@@ -4,7 +4,7 @@ This repository provides examples demonstrating how to develop and run your own 
 
 ## cube-its
 
-The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks within a ROS environment.
+The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks within a ROS 2 environment.
 It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the [Vanetza](https://www.vanetza.org/) library.
 Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
 
@@ -25,9 +25,11 @@ The *I/O* components handles sensor inputs and actuator outputs. It processes da
 The *ITS Facilities* provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
 
 #### Vanetza
-The *Vanetza* node facilitates V2X communication by implementing the **ETSI ITS-G5** protocol for vehicle and infrastructure communication.
+The *Vanetza* node facilitates V2X communication by implementing the **ETSI (European Telecommunications Standards Institute) ITS-G5** protocol for vehicle and infrastructure communication.
 
 ### Supported ETSI ITS messages
+
+The *cube-its* framework incorporates the *etsi_its_messages* package to facilitate the use of standardized ETSI ITS messages for V2X communication within ROS and ROS 2 environments. This integration enables developers to implement and manage V2X communication protocols, adhering to the ETSI specifications, within robotic and autonomous vehicle systems.
 
 | Status | Acronym | Name | EN Specification | TS Specification |
 | --- | --- | --- | --- | --- |
