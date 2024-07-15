@@ -8,7 +8,7 @@ The *cube-its* framework, as shown in figure 1, is designed for intelligent tran
 It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the [Vanetza](https://www.vanetza.org/) library.
 Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
 
-![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png)
+![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
 
 ### GNSS
 The *GNSS* component provides accurate global positioning data for the system. It reads data from GNSS receiver and provides the position, velocity, and time information.
