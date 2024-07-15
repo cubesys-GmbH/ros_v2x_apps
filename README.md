@@ -25,7 +25,7 @@ The *I/O* components handles sensor inputs and actuator outputs. It processes da
 The *ITS Facilities* provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
 
 #### Vanetza
-The *Vanetza* node facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication.
+The *Vanetza* node facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](https://www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication.
 
 ### Supported ETSI ITS messages
 
