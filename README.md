@@ -27,7 +27,7 @@ The *ITS Facilities* provides services and functionalities for intelligent trans
 #### Vanetza
 The *Vanetza* node facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](https://www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication.
 
-### Supported ETSI ITS messages and conformity
+### Compatible ETSI ITS messages and compliance
 
 The *cube-its* framework incorporates the [*etsi_its_messages*](https://github.com/ika-rwth-aachen/etsi_its_messages) package to facilitate the use of standardized ETSI ITS messages for V2X communication within ROS and ROS 2 environments. This integration enables developers to implement and manage V2X communication protocols, adhering to the ETSI specifications, within robotic and autonomous vehicle systems.
 
