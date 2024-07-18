@@ -2,28 +2,40 @@
 
 This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
 
-## cube-its
+## cube-its <img src="https://img.shields.io/badge/ROS 2-humble-blue"/>
 
-The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks within a ROS environment.
+The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks within a ROS 2 environment.
 It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the [Vanetza](https://www.vanetza.org/) library.
 Additionally, *cube-its* can serve as a platform for development, deployment and operation of ITS applications and beyond.
 
-![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png)
+![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
 
-### GNSS
+### Component description 
+
+#### GNSS
 The *GNSS* component provides accurate global positioning data for the system. It reads data from GNSS receiver and provides the position, velocity, and time information.
 
-### Kinematics
+#### Kinematics
 The *Kinematics* computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration.
 
-### I/O
-The *I/O* components handles sensor inputs and actuator outputs. It processes data from various sensors or intefaces such as CAN (Controller Area Network).
+#### I/O
+The *I/O* components handle sensor inputs and actuator outputs. It processes data from various sensors or interfaces such as CAN (Controller Area Network).
 
-### ITS Facilities
+#### ITS Facilities
 The *ITS Facilities* provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
 
-### Vanetza
-The *Vanetza* node facilitates V2X communication by implementing the **ETSI ITS-G5** protocol for vehicle and infrastructure communication.
+#### Vanetza
+The *Vanetza* node facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](https://www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication.
+
+### Compatible ETSI ITS messages and compliance
+
+The *cube-its* framework incorporates the [*etsi_its_messages*](https://github.com/ika-rwth-aachen/etsi_its_messages) package to facilitate the use of standardized ETSI ITS messages for V2X communication within ROS and ROS 2 environments. This integration enables developers to implement and manage V2X communication protocols, adhering to the ETSI specifications, within robotic and autonomous vehicle systems.
+
+| Status | Acronym | Name | EN Specification | TS Specification | TR Specification |
+| --- | --- | --- | --- | --- |--- |
+| :white_check_mark: | CAM | Cooperative Awareness Message | [EN 302 637-2 V1.4.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263702/01.04.01_60/en_30263702v010401p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/cam_en302637_2)) | - | [ETSI TR 103 099 V1.5.1](https://www.etsi.org/deliver/etsi_tr/103000_103099/103099/01.05.01_60/tr_103099v010501p.pdf) | 
+| :white_check_mark: | DENM | Decentralized Environmental Notification Message | [EN 302 637-3 V1.3.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263703/01.03.01_60/en_30263703v010301p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/denm_en302637_3)) | - |[ETSI TR 103 099 V1.5.1](https://www.etsi.org/deliver/etsi_tr/103000_103099/103099/01.05.01_60/tr_103099v010501p.pdf) |
+| :soon: | CPM | Collective Perception Message | - | [TS 103 324 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103324/02.01.01_60/ts_103324v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/cpm_ts103324)) | - |
 
 ## ROS 2
 
@@ -55,7 +67,7 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
   
 # Project "cam_listener"
 
-![Figure 2 - Project overview](images/cam_listener.png)
+![Figure 2 - Project cam_listener](images/cam_listener.png "Figure 2 - Project cam_listener")
 
 The *cam_listener*, as shown in figure 2, listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
 
@@ -106,7 +118,7 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 ```
 # Project "denm_node"
 
-![Figure 3 - Project overview](images/denm_node.png)
+![Figure 3 - Project denm_node](images/denm_node.png "Figure 3 - Project denm_node")
 
 The *denm_node*, shown in figure 3, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
 Additionally, it periodically generates and transmits DENMs based on the current position.
