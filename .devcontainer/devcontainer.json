@@ -1,0 +1,43 @@
+{
+	"name": "cube-sample-apps",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"ROS_DISTRO": "humble"
+		}
+	},
+	"runArgs": [
+		"--init",
+		"--privileged",
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined",
+		"--net=host",
+		"--ipc=host",
+		"--ulimit",
+		"nofile=1024"
+	],
+	// Mount bash history
+	"mounts": [
+		"source=projectname-bashhistory,target=/commandhistory,type=volume"
+	],
+	"workspaceMount": "source=${localWorkspaceFolder},target=/home/cube/cube-its,type=bind",
+	"workspaceFolder": "/home/cube/cube-its",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cmake-tools",
+				"ms-vscode.cpptools",
+				"ms-vscode.cpptools-extension-pack",
+				"ms-python.python",
+				"ms-iot.vscode-ros"
+			]
+		},
+		"settings": {
+			"terminal.integrated.shell.linux": "/bin/bash",
+			"terminal.integrated.shellArgs.linux": [
+				"--login"
+			]
+		}
+	}
+}
