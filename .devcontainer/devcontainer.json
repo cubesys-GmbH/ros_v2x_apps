@@ -1,11 +1,19 @@
 {
 	"name": "cube-sample-apps",
 	"build": {
-		"dockerfile": "Dockerfile"
+		"dockerfile": "Dockerfile",
+		"args": {
+			"ROS_DISTRO": "humble"
+		}
 	},
 	"runArgs": [
 		"--init",
-		"--network=host",
+		"--privileged",
+		"--cap-add=SYS_PTRACE",
+		"--security-opt",
+		"seccomp=unconfined",
+		"--net=host",
+		"--ipc=host",
 		"--ulimit",
 		"nofile=1024"
 	],

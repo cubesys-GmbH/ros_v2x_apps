@@ -1,5 +1,6 @@
 # CUBE devcontainer
-FROM ghcr.io/cubesys-gmbh/workspace:humble
+ARG ROS_DISTRO="humble"
+FROM ghcr.io/cubesys-gmbh/workspace:${ROS_DISTRO}
 SHELL ["/bin/bash", "-c"]
 
 # Change user
