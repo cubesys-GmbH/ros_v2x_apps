@@ -1,5 +1,5 @@
-# CUBE devcontainer 
-ARG ROS_DISTRO="humble"
+# CUBE devcontainer
+ARG ROS_DISTRO="jazzy"
 FROM ghcr.io/cubesys-gmbh/workspace:${ROS_DISTRO}
 SHELL ["/bin/bash", "-c"]
 
