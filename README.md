@@ -12,20 +12,13 @@ Additionally, *cube-its* can serve as a platform for development, deployment and
 
 ### Component description 
 
-#### GNSS
-The *GNSS* component provides accurate global positioning data for the system. It reads data from GNSS receiver and provides the position, velocity, and time information.
-
-#### Kinematics
-The *Kinematics* computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration.
-
-#### I/O
-The *I/O* components handle sensor inputs and actuator outputs. It processes data from various sensors or interfaces such as CAN (Controller Area Network).
-
-#### ITS Facilities
-The *ITS Facilities* provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication.
-
-#### Vanetza
-The *Vanetza* node facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](https://www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication.
+| Component | Description |
+| --- | --- |
+| GNSS | Provides accurate global positioning data for the system. It reads data from GNSS receiver and provides the position, velocity, and time information. | 
+| Kinematics | Computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration. | 
+| I/O | Handles sensor inputs and actuator outputs. It processes data from various sensors or interfaces such as CAN (Controller Area Network). | 
+| ITS Facilities | Provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication. | 
+| Vanetza | Facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](https://www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication. | 
 
 ### Compatible ETSI ITS messages
 
