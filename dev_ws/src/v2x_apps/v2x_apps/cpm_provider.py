@@ -117,7 +117,7 @@ class CpmProvider(Node):
         if self.position_vector:
             cpm = self.generate_perceived_object_cpm()
             self.cpm_publisher.publish(cpm)
-            self.get_logger().info(f'CPM provided')
+            self.get_logger().info('CPM provided')
 
 
 def main(args=None):
