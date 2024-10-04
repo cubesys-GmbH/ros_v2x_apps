@@ -17,7 +17,7 @@ class CpmProvider(Node):
         self.pos_vector_subscription = self.create_subscription(
             PositionVector, '/its/position_vector', self.position_update, 1)
 
-        # Publish who provides CPM to cube-its
+        # Publisher who provides CPM to cube-its
         self.cpm_publisher = self.create_publisher(
             cpm_msg.CollectivePerceptionMessage, '/its/cpm_provided', 1)
 
@@ -80,6 +80,7 @@ class CpmProvider(Node):
 
     def generate_perceived_object_cpm(self) -> cpm_msg.CollectivePerceptionMessage:
         """Generate a CPM with use-case specific data."""
+        
         # Perceived object
         perceived_object = cpm_msg.PerceivedObject()
         perceived_object.measurement_delta_time.value = 1
