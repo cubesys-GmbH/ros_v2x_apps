@@ -158,14 +158,14 @@ ros2 run v2x_apps denm_node
 
 ![Figure 4 - Project cpm_provider](images/cpm_provider.png "Figure 4 - Project cpm_provider")
 
-In the following example, we regularly create a Collective Perception Message (CPM) that includes sample Perceived Object data and transmits it based on the current position. The *cpm_provider*, illustrated in Figure 4, is tasked with supplying CPMs to *cube-its*. It subscribes to receive position updates and publishes a CPM to the */its/cpm_provided* topic, where the CPS facility in cube-its handles the transmission of the CPM. Furthermore, it consistently generates and sends CPMs according to the current position.
+In the following example, we regularly create a Collective Perception Message (CPM) that includes sample Perceived Object data and transmits it based on the current position. The *cpm_provider*, illustrated in Figure 4, is tasked with supplying CPMs to *cube-its*. It subscribes to receive position updates and publishes a CPM to the */its/cpm_provided* topic, where the CPS facility in *cube-its* handles the transmission of the CPM. Furthermore, it consistently generates and sends CPMs according to the current position.
 
 ## Subscriptions and Publisher
 **Subscriptions:**
 - **/its/position_vector:** The *cpm_provider* subscribes to this topic to receive continuous updates regarding the current position.
 
 **Publisher:**
-- **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to cube-its on this topic for transmission.
+- **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to *cube-its* on this topic for transmission.
 
 ## Build and run project
 
