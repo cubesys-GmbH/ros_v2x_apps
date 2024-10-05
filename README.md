@@ -63,11 +63,11 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
 - [cube:evk](https://www.nfiniity.com/#portfolio) or [cube:micro OBU](https://www.nfiniity.com/#portfolio) running the *cube-its* framework
 - You likely already have worked with devcontainer projects in VSCode (Visual Studio Code). If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
   
-# Project "cam_listener"
+# Monitoring Cooperative Awareness Messages with the "cam_listener"
 
 ![Figure 2 - Project cam_listener](images/cam_listener.png "Figure 2 - Project cam_listener")
 
-The *cam_listener*, as shown in figure 2, listens for received CAMs transmitted through the designated published topic "/its/cam_received" by *cube-its*. The *cube-its* framework handles the publication of received CAM data, while the *cam_listener* node is configured to subscribe to this specific topic. This configuration enables the *cam_listener* node to efficiently receive and process the CAM data, showcasing a fundamental aspect of the project's functionality.
+The *cam_listener*, depicted in Figure 2, monitors for received Cooperative Awareness Messages (CAMs) sent through the designated published topic */its/cam_received* by *cube-its*. Within the *cube-its* framework, the publication of received CAM data is managed, while the *cam_listener* node is set up to subscribe to this particular topic. This setup allows the *cam_listener* node to receive and process CAM data, highlighting a key aspect of the project's functionality.
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
@@ -114,16 +114,15 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 [INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
 ```
-# Project "denm_node"
+# Generating Decentralized Environmental Notification Messages with "denm_node"
 
 ![Figure 3 - Project denm_node](images/denm_node.png "Figure 3 - Project denm_node")
 
-The *denm_node*, shown in figure 3, is responsible for transmitting and receiving DENMs over *cube-its*. The *denm_node* subscribes to topics to get position updates and received DENMs and uses a service call to request the transmission of DENMs. 
-Additionally, it periodically generates and transmits DENMs based on the current position.
+The *denm_node*, illustrated in Figure 3, handles the transmission and reception of Decentralized Environmental Notification Messages (DENMs) via *cube-its*. It subscribes to specific topics to receive position updates and incoming DENMs, and it utilizes a service call to initiate the transmission of DENMs. Furthermore, the denm_node periodically generates and sends DENMs based on its current location.
 
 ## Subscriptions and Services
 **Subscriptions:**
-- **/its/position_vector:** The denm_node subscribes to this topic to receive regular updates about the current position.
+- **/its/position_vector:** The *denm_node* subscribes to this topic to receive regular updates about the current position.
 - **/its/denm_received:** This subscription allows the *denm_node* to receive incoming DENMs from other V2X capable stations. By processing these messages, the node can react to various environmental events and updates.
 
 **Services:**
@@ -153,4 +152,43 @@ Now run the denm_node:
 
 ```
 ros2 run v2x_apps denm_node
+```
+
+# Generating Collective Perception Messages with "cpm_provider"
+
+![Figure 4 - Project cpm_provider](images/cpm_provider.png "Figure 4 - Project cpm_provider")
+
+In the following example, we regularly create a Collective Perception Message (CPM) that includes sample Perceived Object data and transmits it based on the current position. The *cpm_provider*, illustrated in Figure 4, is tasked with supplying CPMs to *cube-its*. It subscribes to receive position updates and publishes a CPM to the */its/cpm_provided* topic, where the CPS facility in cube-its handles the transmission of the CPM. Furthermore, it consistently generates and sends CPMs according to the current position.
+
+## Subscriptions and Publisher
+**Subscriptions:**
+- **/its/position_vector:** The *cpm_provider* subscribes to this topic to receive continuous updates regarding the current position.
+
+**Publisher:**
+- **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to cube-its on this topic for transmission.
+
+## Build and run project
+
+Navigate to the root of the workspace, dev_ws:
+
+```
+cd dev_ws
+```
+
+Build application by:
+
+```
+colcon build --packages-select v2x_apps
+```
+
+Still in the same terminal, source the setup files:
+
+```
+source install/setup.bash
+```
+
+Now run the denm_node:
+
+```
+ros2 run v2x_apps cpm_provider
 ```
