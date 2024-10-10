@@ -7,6 +7,57 @@ from rclpy.node import Node
 from vanetza_msgs.msg import PositionVector
 
 
+class CpmValue:
+    """ Represents a CPM value with scaling and range checking. """
+    def __init__(self, value, scale=1.0, unavailable=math.nan):
+        self.value = value
+        self.scaling_factor = scale
+        self.min_value = -math.inf
+        self.max_value = math.inf
+        self.out_of_range_value = unavailable
+        self.unavailable_value = unavailable
+
+    def range(self, min, max, out_of_range=None):
+        self.min_value = min
+        self.max_value = max
+        if out_of_range is not None:
+            self.out_of_range_value = out_of_range
+
+    def get(self) -> int:
+        if math.isfinite(self.value):
+            value = round(self.value * self.scaling_factor)
+            if value < self.min_value or value > self.max_value:
+                return int(self.out_of_range_value)
+            else:
+                return int(value)
+        else:
+            return int(self.unavailable_value)
+
+
+class CpmLatitudeValue(CpmValue):
+    def __init__(self, value):
+        super().__init__(value, 1e7, cpm_msg.Latitude.UNAVAILABLE)
+        self.range(cpm_msg.Latitude.MIN, cpm_msg.Latitude.MAX)
+
+
+class CpmLongitudeValue(CpmValue):
+    def __init__(self, value):
+        super().__init__(value, 1e7, cpm_msg.Longitude.UNAVAILABLE)
+        self.range(cpm_msg.Longitude.MIN, cpm_msg.Longitude.MAX)
+
+
+class CpmSemiAxisLengthValue(CpmValue):
+    def __init__(self, value):
+        super().__init__(value, 1e2, cpm_msg.SemiAxisLength.UNAVAILABLE)
+        self.range(cpm_msg.SemiAxisLength.MIN, cpm_msg.SemiAxisLength.MAX, cpm_msg.SemiAxisLength.OUT_OF_RANGE)
+
+
+class CpmAltitudeValue(CpmValue):
+    def __init__(self, value):
+        super().__init__(value, 1e2, cpm_msg.AltitudeValue.UNAVAILABLE)
+        self.range(cpm_msg.AltitudeValue.MIN, cpm_msg.AltitudeValue.MAX)
+
+
 class CpmProvider(Node):
     def __init__(self):
         super().__init__('cpm_provider')
@@ -35,46 +86,11 @@ class CpmProvider(Node):
 
         # Reference position
         pos = cpm_msg.ReferencePosition()
-        pos.latitude.value = (
-            int(
-                self.position_vector.latitude
-                * 1e7
-            )
-            if math.isfinite(self.position_vector.latitude)
-            else cpm_msg.Latitude.UNAVAILABLE
-        )
-        pos.longitude.value = (
-            int(
-                self.position_vector.longitude
-                * 1e7
-            )
-            if math.isfinite(self.position_vector.longitude)
-            else cpm_msg.Longitude.UNAVAILABLE
-        )
-        pos.position_confidence_ellipse.semi_major_confidence.value = (
-            int(
-                self.position_vector.semi_major_confidence
-                * 1e2
-            )
-            if math.isfinite(self.position_vector.semi_major_confidence)
-            else cpm_msg.SemiAxisLength.UNAVAILABLE
-        )
-        pos.position_confidence_ellipse.semi_minor_confidence.value = (
-            int(
-                self.position_vector.semi_minor_confidence
-                * 1e2
-            )
-            if math.isfinite(self.position_vector.semi_minor_confidence)
-            else cpm_msg.SemiAxisLength.UNAVAILABLE
-        )
-        pos.altitude.altitude_value.value = (
-            int(
-                self.position_vector.altitude
-                * 1e2
-            )
-            if math.isfinite(self.position_vector.altitude)
-            else cpm_msg.AltitudeValue.UNAVAILABLE
-        )
+        pos.latitude.value = CpmLatitudeValue(self.position_vector.latitude).get()
+        pos.longitude.value = CpmLongitudeValue(self.position_vector.longitude).get()
+        pos.position_confidence_ellipse.semi_major_confidence.value = CpmSemiAxisLengthValue(self.position_vector.semi_major_confidence).get()
+        pos.position_confidence_ellipse.semi_minor_confidence.value = CpmSemiAxisLengthValue(self.position_vector.semi_minor_confidence).get()
+        pos.altitude.altitude_value.value = CpmAltitudeValue(self.position_vector.altitude).get()
         pos.altitude.altitude_confidence.value = cpm_msg.AltitudeConfidence.UNAVAILABLE
         return pos
 
