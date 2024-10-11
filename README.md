@@ -187,7 +187,7 @@ Still in the same terminal, source the setup files:
 source install/setup.bash
 ```
 
-Now run the denm_node:
+Now run the cpm_provider:
 
 ```
 ros2 run v2x_apps cpm_provider
