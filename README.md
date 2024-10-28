@@ -1,4 +1,8 @@
-# Table of contents
+# Develop and run a sample application for cube-its
+
+This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
+
+## Table of contents
 
 1. [cube-its](#cube-its)
    - 1.1 [Components](#components)
@@ -9,10 +13,6 @@
 4. [Prerequisites](#prerequisites)
 5. [Monitoring Cooperative Awareness Messages](#camlistener)
    - 2.1 [Node visibility](#thema-1)
-
-# Develop and run a sample application for cube-its
-
-This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
 
 ## cube-its <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/>
 
