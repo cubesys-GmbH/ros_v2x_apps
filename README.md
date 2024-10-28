@@ -1,3 +1,15 @@
+# Table of contents
+
+1. [cube-its](#cube-its)
+   - 1.1 [Components](#components)
+   - 1.2 [Compatible ETSI ITS messages](#compatibility)
+   - 1.3 [Conformance validation](#conformance)
+2. [ROS 2](#ros2)
+   - 2.1 [Node visibility](#thema-1)
+4. [Prerequisites](#prerequisites)
+5. [Monitoring Cooperative Awareness Messages](#camlistener)
+   - 2.1 [Node visibility](#thema-1)
+
 # Develop and run a sample application for cube-its
 
 This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
@@ -10,7 +22,7 @@ Additionally, *cube-its* can serve as a platform for development, deployment and
 
 ![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
 
-### Component description 
+### Components 
 
 | Component | Description |
 | --- | --- |
