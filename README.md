@@ -8,10 +8,10 @@ This repository provides examples demonstrating how to develop and run your own 
    - 1.1 [Component description](#component-description)
    - 1.2 [Compatible ETSI ITS messages](#compatible-ETSI-ITS-messages)
    - 1.3 [Conformance validation](#conformance-validation)
-2. [ROS 2](#ros2)
-   - 2.1 [Node visibility](#thema-1)
+2. [ROS 2](#ros-2)
+   - 2.1 [Node visibility](#node-visibility)
 4. [Prerequisites](#prerequisites)
-5. [Monitoring Cooperative Awareness Messages](#camlistener)
+5. [Monitoring Cooperative Awareness Messages](#monitoring-cooperative-awareness-messages-with-the-"cam_listener")
    - 2.1 [Node visibility](#thema-1)
 
 ## cube-its <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/>
