@@ -14,7 +14,7 @@ This repository provides examples demonstrating how to develop and run your own 
 4. [Monitor Cooperative Awareness Messages](#monitor-cooperative-awareness-messages)
 5. [Generate Decentralized Environmental Notification Messages](#generate-decentralized-environmental-notification-messages)
 6. [Generate Collective Perception Messages](#generate-collective-perception-messages)
-7. [Build and run projects](#build-and-run-projects)
+7. [Build and run nodes](#build-and-run-nodes)
 
 ## cube-its <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/>
 
@@ -112,7 +112,7 @@ In the following example, we regularly create a Collective Perception Message (C
 **Publisher:**
 - **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to *cube-its* on this topic for transmission.
 
-# Build and run project
+# Build and run nodes
 
 Navigate to the root of the workspace, dev_ws:
 
