@@ -10,9 +10,9 @@ This repository provides examples demonstrating how to develop and run your own 
    - 1.3 [Conformance validation](#conformance-validation)
 2. [ROS 2](#ros-2)
    - 2.1 [Node visibility](#node-visibility)
-4. [Prerequisites](#prerequisites)
-5. [Monitoring Cooperative Awareness Messages](#monitoring-cooperative-awareness-messages-with-the-"cam_listener")
-   - 2.1 [Node visibility](#thema-1)
+3. [Prerequisites](#prerequisites)
+4. [Monitoring Cooperative Awareness Messages](#monitoring-cooperative-awareness-messages)
+5. [Generate Decentralized Environmental Notification Messages](#generate-decentralized-environmental-notification-messages)
 
 ## cube-its <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/>
 
@@ -75,7 +75,7 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
 - [cube:evk](https://www.nfiniity.com/#portfolio) or [cube:micro OBU](https://www.nfiniity.com/#portfolio) running the *cube-its* framework
 - You likely already have worked with devcontainer projects in VSCode (Visual Studio Code). If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
   
-# Monitoring Cooperative Awareness Messages with the "cam_listener"
+# Monitor Cooperative Awareness Messages
 
 ![Figure 2 - Project cam_listener](images/cam_listener.png "Figure 2 - Project cam_listener")
 
@@ -126,7 +126,7 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 [INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
 ```
-# Generating Decentralized Environmental Notification Messages with "denm_node"
+# Generate Decentralized Environmental Notification Messages
 
 ![Figure 3 - Project denm_node](images/denm_node.png "Figure 3 - Project denm_node")
 
@@ -166,7 +166,7 @@ Now run the denm_node:
 ros2 run v2x_apps denm_node
 ```
 
-# Generating Collective Perception Messages with "cpm_provider"
+# Generate Collective Perception Messages
 
 ![Figure 4 - Project cpm_provider](images/cpm_provider.png "Figure 4 - Project cpm_provider")
 
