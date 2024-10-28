@@ -5,9 +5,9 @@ This repository provides examples demonstrating how to develop and run your own 
 ## Table of contents
 
 1. [cube-its](#cube-its)
-   - 1.1 [Components](#components)
-   - 1.2 [Compatible ETSI ITS messages](#compatibility)
-   - 1.3 [Conformance validation](#conformance)
+   - 1.1 [Component description](#component-description)
+   - 1.2 [Compatible ETSI ITS messages](#compatible-ETSI-ITS-messages)
+   - 1.3 [Conformance validation](#conformance-validation)
 2. [ROS 2](#ros2)
    - 2.1 [Node visibility](#thema-1)
 4. [Prerequisites](#prerequisites)
@@ -22,7 +22,7 @@ Additionally, *cube-its* can serve as a platform for development, deployment and
 
 ![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
 
-### Components 
+### Component description
 
 | Component | Description |
 | --- | --- |
