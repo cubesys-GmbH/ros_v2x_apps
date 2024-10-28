@@ -11,7 +11,7 @@ This repository provides examples demonstrating how to develop and run your own 
 2. [ROS 2](#ros-2)
    - 2.1 [Node visibility](#node-visibility)
 3. [Prerequisites](#prerequisites)
-4. [Monitoring Cooperative Awareness Messages](#monitoring-cooperative-awareness-messages)
+4. [Monitor Cooperative Awareness Messages](#monitor-cooperative-awareness-messages)
 5. [Generate Decentralized Environmental Notification Messages](#generate-decentralized-environmental-notification-messages)
 
 ## cube-its <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/>
