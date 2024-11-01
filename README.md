@@ -36,7 +36,7 @@ Additionally, *cube-its* can serve as a platform for development, deployment and
 
 The *cube-its* framework incorporates the [*etsi_its_messages*](https://github.com/ika-rwth-aachen/etsi_its_messages) package to facilitate the use of standardized ETSI ITS messages for V2X communication within ROS and ROS 2 environments. This integration enables developers to implement and manage V2X communication protocols, adhering to the ETSI specifications, within robotic and autonomous vehicle systems.
 
-| Status | Acronym | Name | EN Specification | TS Specification | since version |
+| Status | Acronym | Name | EN Specification | TS Specification | Since Version |
 | --- | --- | --- | --- | --- | --- |
 | :white_check_mark: | CAM | Cooperative Awareness Message | [EN 302 637-2 V1.4.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263702/01.04.01_60/en_30263702v010401p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/cam_en302637_2)) | - | <img src="https://img.shields.io/badge/cube_its-v1.1.0-green"/> |
 | :white_check_mark: | DENM | Decentralized Environmental Notification Message | [EN 302 637-3 V1.3.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263703/01.03.01_60/en_30263703v010301p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/denm_en302637_3)) | - | <img src="https://img.shields.io/badge/cube its-v1.1.0-green"/> |
