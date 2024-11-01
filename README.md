@@ -14,7 +14,7 @@ This repository provides examples demonstrating how to develop and run your own 
 6. [Generate Collective Perception Messages](#generate-collective-perception-messages)
 7. [Build and run nodes](#build-and-run-nodes)
 
-## cube-its <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> <img src="https://img.shields.io/badge/latest-v1.2.0-green"/>
+## cube-its <img src="https://img.shields.io/badge/latest-v1.2.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
 
 The *cube-its* framework, as shown in figure 1, is designed for intelligent transportation systems (ITS) and vehicular networks within a ROS 2 environment.
 It consists of several nodes and components that work together to manage GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication using the [Vanetza](https://www.vanetza.org/) library.
