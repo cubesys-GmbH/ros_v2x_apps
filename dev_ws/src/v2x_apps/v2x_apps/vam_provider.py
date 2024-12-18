@@ -62,15 +62,15 @@ class VamProvider(Node):
         super().__init__('vam_provider')
         self.get_logger().info(f'Node "{self.get_name()}" started')
 
-        # We are interested in our own position so we can set a reasonable destination area
-        self.position_vector: Optional[PositionVector] = PositionVector()
+        # Our reference position
+        self.position_vector: Optional[PositionVector] = None
         self.pos_vector_subscription = self.create_subscription(
             PositionVector, '/its/position_vector', self.position_update, 1)
 
         # Publisher who provides VAM to cube-its
         self.vam_publisher = self.create_publisher(vam_msg.VAM, '/its/vam_provided', 1)
 
-        # Here we just provide a CPM to cube-its every 1 seconds.
+        # Here we just provide a VAM to cube-its every 1 seconds.
         self.create_timer(timer_period_sec=1.0, callback=self.publish)
 
     def position_update(self, msg: PositionVector) -> None:
@@ -95,9 +95,11 @@ class VamProvider(Node):
         """Generate a VAM with use-case specific data."""
         msg = vam_msg.VAM()
         # Message header and generation_delta_time will be assigned by the VA service.
+        # VRU is a standstill pedestrian
         msg.vam.vam_parameters.basic_container.station_type.value = vam_msg.TrafficParticipantType.PEDESTRIAN
         msg.vam.vam_parameters.basic_container.reference_position = self.get_reference_position()
-        # VRU is a standstill pedestrian
+        
+        # Assign some values at the mandatory VruHighFrequencyContainer
         vru_high_frequency_container = vam_msg.VruHighFrequencyContainer()
         vru_high_frequency_container.speed.speed_value.value = vam_msg.SpeedValue.STANDSTILL
         vru_high_frequency_container.speed.speed_confidence.value = vam_msg.SpeedConfidence.UNAVAILABLE
