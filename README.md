@@ -10,9 +10,9 @@ This repository provides examples demonstrating how to develop and run your own 
    - 2.1 [Node visibility](#node-visibility)
 3. [Prerequisites](#prerequisites)
 4. [Code examples](#code-examples)
-   - 4.1 [Monitor Cooperative Awareness Messages](#monitor-cooperative-awareness-messages)
-   - 4.2 [Generate Decentralized Environmental Notification Messages](#generate-decentralized-environmental-notification-messages)
-   - 4.3 [Generate Collective Perception Messages](#generate-collective-perception-messages)
+   - 4.1 [Cooperative Awareness Message (CAM)](#cooperative-awareness-message)
+   - 4.2 [Decentralized Environmental Notification Message (DENM)](#decentralized-environmental-notification-message)
+   - 4.3 [Collective Perception Message (CPM)](#collective-perception-message)
 5. [Build and run nodes](#build-and-run-nodes)
 
 ## cube-its <img src="https://img.shields.io/badge/latest-v1.2.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
@@ -91,7 +91,7 @@ dev_ws
 ...
 ```
 
-### Monitor Cooperative Awareness Messages
+### Cooperative Awareness Message
 
 ![Figure 2 - Project cam_listener](images/cam_listener.png "Figure 2 - Project cam_listener")
 
@@ -99,13 +99,12 @@ The *cam_listener*, depicted in Figure 2, monitors for received Cooperative Awar
 
 The *cam_listener* node operates within a Docker container, similar to the *cube-its*. Both are functioning within a ROS 2 environment and share the same domain, facilitating the ability of ROS 2 nodes to discover each other.
 
-### Generate Decentralized Environmental Notification Messages
+### Decentralized Environmental Notification Message
 
 ![Figure 3 - Project denm_node](images/denm_node.png "Figure 3 - Project denm_node")
 
 The *denm_node*, illustrated in Figure 3, handles the transmission and reception of Decentralized Environmental Notification Messages (DENMs) via *cube-its*. It subscribes to specific topics to receive position updates and incoming DENMs, and it utilizes a service call to initiate the transmission of DENMs. Furthermore, the denm_node periodically generates and sends DENMs based on its current location.
 
-#### Subscriptions and Services
 **Subscriptions:**
 - **/its/position_vector:** The *denm_node* subscribes to this topic to receive regular updates about the current position.
 - **/its/denm_received:** This subscription allows the *denm_node* to receive incoming DENMs from other V2X capable stations. By processing these messages, the node can react to various environmental events and updates.
@@ -113,13 +112,12 @@ The *denm_node*, illustrated in Figure 3, handles the transmission and reception
 **Services:**
 - **/its/den_request:** The *denm_node* can use this service to request the transmission of a DENM. This is likely an on-demand feature, where a specific condition or event triggers the need to send a DENM immediately. Here, in this example the transmission is called periodically.
 
-### Generate Collective Perception Messages
+### Collective Perception Message
 
 ![Figure 4 - Project cpm_provider](images/cpm_provider.png "Figure 4 - Project cpm_provider")
 
 In the following example, we regularly create a Collective Perception Message (CPM) that includes sample Perceived Object data and transmits it based on the current position. The *cpm_provider*, illustrated in Figure 4, is tasked with supplying CPMs to *cube-its*. It subscribes to receive position updates and publishes a CPM to the */its/cpm_provided* topic, where the CPS facility in *cube-its* handles the transmission of the CPM. Furthermore, it consistently generates and sends CPMs according to the current position.
 
-#### Subscriptions and Publisher
 **Subscriptions:**
 - **/its/position_vector:** The *cpm_provider* subscribes to this topic to receive continuous updates regarding the current position.
 
