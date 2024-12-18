@@ -113,20 +113,20 @@ The *denm_node*, illustrated in Figure 3, handles the transmission and reception
 **Services:**
 - **/its/den_request:** The *denm_node* can use this service to request the transmission of a DENM. This is likely an on-demand feature, where a specific condition or event triggers the need to send a DENM immediately. Here, in this example the transmission is called periodically.
 
-## Generate Collective Perception Messages
+### Generate Collective Perception Messages
 
 ![Figure 4 - Project cpm_provider](images/cpm_provider.png "Figure 4 - Project cpm_provider")
 
 In the following example, we regularly create a Collective Perception Message (CPM) that includes sample Perceived Object data and transmits it based on the current position. The *cpm_provider*, illustrated in Figure 4, is tasked with supplying CPMs to *cube-its*. It subscribes to receive position updates and publishes a CPM to the */its/cpm_provided* topic, where the CPS facility in *cube-its* handles the transmission of the CPM. Furthermore, it consistently generates and sends CPMs according to the current position.
 
-### Subscriptions and Publisher
+#### Subscriptions and Publisher
 **Subscriptions:**
 - **/its/position_vector:** The *cpm_provider* subscribes to this topic to receive continuous updates regarding the current position.
 
 **Publisher:**
 - **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to *cube-its* on this topic for transmission.
 
-# Build and run nodes
+## Build and run nodes
 
 Navigate to the root of the workspace, dev_ws:
 
