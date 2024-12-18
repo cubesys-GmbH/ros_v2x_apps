@@ -63,7 +63,7 @@ class VamProvider(Node):
         self.get_logger().info(f'Node "{self.get_name()}" started')
 
         # We are interested in our own position so we can set a reasonable destination area
-        self.position_vector: Optional[PositionVector] = None
+        self.position_vector: Optional[PositionVector] = PositionVector()
         self.pos_vector_subscription = self.create_subscription(
             PositionVector, '/its/position_vector', self.position_update, 1)
 
@@ -101,7 +101,7 @@ class VamProvider(Node):
         vru_high_frequency_container = vam_msg.VruHighFrequencyContainer()
         vru_high_frequency_container.speed.speed_value.value = vam_msg.SpeedValue.STANDSTILL
         vru_high_frequency_container.speed.speed_confidence.value = vam_msg.SpeedConfidence.UNAVAILABLE
-        vru_high_frequency_container.heading.value = vam_msg.Wgs84AngleValue.WGS84_NORTH
+        vru_high_frequency_container.heading.value.value = vam_msg.Wgs84AngleValue.WGS84_NORTH
         vru_high_frequency_container.heading.confidence.value = vam_msg.Wgs84AngleConfidence.UNAVAILABLE
         vru_high_frequency_container.longitudinal_acceleration.longitudinal_acceleration_value.value = vam_msg.LongitudinalAccelerationValue.UNAVAILABLE
         vru_high_frequency_container.longitudinal_acceleration.longitudinal_acceleration_confidence.value = vam_msg.AccelerationConfidence.UNAVAILABLE
@@ -116,7 +116,6 @@ class VamProvider(Node):
             vam = self.generate_vam()
             self.vam_publisher.publish(vam)
             self.get_logger().info('VAM provided')
-        self.get_logger().info("VAM")
 
 
 def main(args=None):
