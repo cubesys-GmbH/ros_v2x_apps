@@ -9,10 +9,11 @@ This repository provides examples demonstrating how to develop and run your own 
 2. [ROS 2](#ros-2)
    - 2.1 [Node visibility](#node-visibility)
 3. [Prerequisites](#prerequisites)
-4. [Monitor Cooperative Awareness Messages](#monitor-cooperative-awareness-messages)
-5. [Generate Decentralized Environmental Notification Messages](#generate-decentralized-environmental-notification-messages)
-6. [Generate Collective Perception Messages](#generate-collective-perception-messages)
-7. [Build and run nodes](#build-and-run-nodes)
+4. [Code examples](#code-examples)
+   - 4.1 [Monitor Cooperative Awareness Messages](#monitor-cooperative-awareness-messages)
+   - 4.2 [Generate Decentralized Environmental Notification Messages](#generate-decentralized-environmental-notification-messages)
+   - 4.3 [Generate Collective Perception Messages](#generate-collective-perception-messages)
+5. [Build and run nodes](#build-and-run-nodes)
 
 ## cube-its <img src="https://img.shields.io/badge/latest-v1.2.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
 
@@ -76,8 +77,7 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
 - [cube:evk](https://www.nfiniity.com/#portfolio) or [cube:micro OBU](https://www.nfiniity.com/#portfolio) running the *cube-its* framework
 - You likely already have worked with devcontainer projects in VSCode (Visual Studio Code). If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
 
-## Examples
-### Overview
+## Code examples
 
 ```bash
 dev_ws
@@ -86,10 +86,11 @@ dev_ws
 │   ├── btp_sender.py
 │   ├── cam_listener.py
 │   ├── cpm_provider.py
+│   ├── denm_node.py
 │   └── ...
 ...
 ```
-  
+
 ### Monitor Cooperative Awareness Messages
 
 ![Figure 2 - Project cam_listener](images/cam_listener.png "Figure 2 - Project cam_listener")
