@@ -15,7 +15,7 @@ setup(
     zip_safe=True,
     maintainer='Apostolos Georgiadis',
     maintainer_email='apostolos.georgiadis@nfiniity.com',
-    description='Collection of V2X applications utilizing ćube devices',
+    description='Collection of V2X applications utilizing cube devices',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [

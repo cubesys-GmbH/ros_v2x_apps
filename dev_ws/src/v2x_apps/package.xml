@@ -3,7 +3,7 @@
 <package format="3">
   <name>v2x_apps</name>
   <version>1.0.0</version>
-  <description>Collection of exemplary V2X applications engaging cube devices</description>
+  <description>Collection of V2X applications utilizing cube devices</description>
   <author email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</author>
   <maintainer  email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</maintainer>
   <license>MIT</license>
