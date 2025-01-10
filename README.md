@@ -56,7 +56,7 @@ The *cube-its* framework is validated using the ETSI conformance validation fram
 ### Supported applications
 
 This section provides an overview of the supported applications profiled and specified by various C-ITS platforms and consortia, including [C-ROADS](https://www.c-roads.eu/platform.html), the [Car2Car Communication Consortium (C2CCC)](https://www.car-2-car.org/), the [Connected Motorcycle Consortium (CMC)](https://www.cmc-info.net/), and others.
-For simplicity, the implementation of triggering conditions is omitted here due to the lack of in-vehicle information.
+For simplicity, the implementation of triggering conditions is simplified here due to the lack of in-vehicle information.
 
 Please note that application profiling can always be achieved by configuring the specified message values and applying the appropriate trigger conditions. Examples of how to configure the values for various messages, such as DENM, CPM, VAM etc. can be found in this repository.
 
