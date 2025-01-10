@@ -6,6 +6,7 @@ This repository provides examples demonstrating how to develop and run your own 
    - 1.1 [Component description](#component-description)
    - 1.2 [Compatible ETSI ITS messages](#compatible-ETSI-ITS-messages)
    - 1.3 [Conformance validation](#conformance-validation)
+   - 1.4 [Supported applications](#supported-applications)
 2. [ROS 2](#ros-2)
    - 2.1 [Node visibility](#node-visibility)
 3. [Prerequisites](#prerequisites)
@@ -52,7 +53,9 @@ The *cube-its* framework incorporates the [*etsi_its_messages*](https://github.c
 
 The *cube-its* framework is validated using the ETSI conformance validation framework, as specified in [ETSI TR 103 099 V1.5.1](https://www.etsi.org/deliver/etsi_tr/103000_103099/103099/01.05.01_60/tr_103099v010501p.pdf).
 
-### Supported applicatations
+### Supported applications
+
+This section provides an overview of the supported applications as defined by various ITS platforms and consortia, including [C-Roads](https://www.c-roads.eu/platform.html), the [Car2Car Communication Consortium](https://www.car-2-car.org/), the [Connected Motorcycle Consortium (CMC)](https://www.cmc-info.net/), and others.
 
 | Status | Acronym | Name | Specification | Supported in cube-its |
 | --- | --- | --- | --- | --- |
