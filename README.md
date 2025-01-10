@@ -56,7 +56,7 @@ The *cube-its* framework is validated using the ETSI conformance validation fram
 
 | Status | Acronym | Name | Specification | Supported in cube-its |
 | --- | --- | --- | --- | --- |
-| :white_check_mark: | StVeWa | Stationary Vehicle Warning | - | [C2CCC Stationary Vehicle Rel.1.6.7](https://www.car-2-car.org/fileadmin/documents/Basic_System_Profile/Release_1.6.7/C2CCC_RS_2006_StationaryVehicle_R167.pdf) |
+| :white_check_mark: | StVeWa | Stationary Vehicle Warning | [C2CCC Stationary Vehicle Rel.1.6.7](https://www.car-2-car.org/fileadmin/documents/Basic_System_Profile/Release_1.6.7/C2CCC_RS_2006_StationaryVehicle_R167.pdf) | - |
 
 
 
