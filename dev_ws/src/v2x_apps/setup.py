@@ -15,7 +15,7 @@ setup(
     zip_safe=True,
     maintainer='Apostolos Georgiadis',
     maintainer_email='apostolos.georgiadis@nfiniity.com',
-    description='Collection of Exemplary V2X Applications Engaging CUBE Devices',
+    description='Collection of V2X applications utilizing ćube devices',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
@@ -24,6 +24,7 @@ setup(
                 'cam_listener = v2x_apps.cam_listener:main',
                 'denm_node = v2x_apps.denm_node:main',
                 'cpm_provider = v2x_apps.cpm_provider:main',
+                'stationary_vehicle = c2c.stationary_vehicle_trigger:main',
         ],
 },
 )
