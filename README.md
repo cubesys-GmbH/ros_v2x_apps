@@ -104,7 +104,8 @@ dev_ws
 │   ├── cam_listener.py
 │   ├── cpm_provider.py
 │   ├── denm_node.py
-│   └── ...
+│   └── c2c
+|       ├── stationary_vehicle_trigger.py
 ...
 ```
 
