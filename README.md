@@ -55,7 +55,7 @@ The *cube-its* framework is validated using the ETSI conformance validation fram
 
 ### Supported applications
 
-This section provides an overview of the supported applications as defined by various ITS platforms and consortia, including [C-Roads](https://www.c-roads.eu/platform.html), the [Car2Car Communication Consortium](https://www.car-2-car.org/), the [Connected Motorcycle Consortium (CMC)](https://www.cmc-info.net/), and others.
+This section provides an overview of the supported applications as defined by various ITS platforms and consortia, including [C-ROADS](https://www.c-roads.eu/platform.html), the [Car2Car Communication Consortium (C2CCC)](https://www.car-2-car.org/), the [Connected Motorcycle Consortium (CMC)](https://www.cmc-info.net/), and others.
 
 | Status | Acronym | Name | Specification | Supported in cube-its |
 | --- | --- | --- | --- | --- |
