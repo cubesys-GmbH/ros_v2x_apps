@@ -15,7 +15,7 @@ This repository provides examples demonstrating how to develop and run your own 
    - 4.2 [Decentralized Environmental Notification Message (DENM)](#decentralized-environmental-notification-message)
    - 4.3 [Collective Perception Message (CPM)](#collective-perception-message)
    - 4.4 [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-message)
-   - 4.5 [ Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
+   - 4.5 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 5. [Build and run nodes](#build-and-run-nodes)
 
 ## cube-its <img src="https://img.shields.io/badge/latest-v1.2.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
