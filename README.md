@@ -146,7 +146,7 @@ In the following example, we regularly create a Collective Perception Message (C
 
 The *stationary_vehicle*, depicted in Figure 5, initiates a Stationary Vehicle Warning (StVeWa) using the facility service on cube-its.
 In this scenario, our client application, *stationary_vehicle*, sends a single request in order to trigger StVeWa, which is acknowledged by a response from the facility service.
-Upon successfully triggering the warning, *cube-its* continuously transmits the StVeWa application until the facility service processes a termination request.
+Upon successfully triggering the warning, *cube-its* continuously transmits the StVeWa message, a DENM message profiled by C2C-CC, until the facility service processes a termination request.
 
 **Services:**
 - **/c2c/stationary_vehicle_request:** The *stationary_vehicle* can use this service call to trigger or terminate a stationary vehicle warning on *cube-its*.
