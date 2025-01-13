@@ -94,7 +94,7 @@ class VamProvider(Node):
     def generate_vam(self) -> vam_msg.VAM:
         """Generate a VAM with use-case specific data."""
         msg = vam_msg.VAM()
-        # Message header and generation_delta_time will be assigned by the VA service.
+        # Message header will be assigned by the VA service.
         # VRU is a standstill pedestrian
         msg.vam.vam_parameters.basic_container.station_type.value = vam_msg.TrafficParticipantType.PEDESTRIAN
         msg.vam.vam_parameters.basic_container.reference_position = self.get_reference_position()
