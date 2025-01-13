@@ -148,7 +148,7 @@ In the following example, we regularly create a Collective Perception Message (C
 
 ![Figure 5 - Project vam_provider](images/vam_provider.png "Figure 5 - Project vam_provider")
 
-In the following example, we regularly create a Vulnerable Road User Awareness Message (VAM) that includes sample vulnerable user data and transmits it based on the current position. The vam_provider, shown in Figure 5, is responsible for delivering VAMs to *cube-its*. It subscribes to receive position updates and publishes a CPM to the */its/vam_provided* topic, where the VA facility in *cube-its* handles the transmission of the VAM. Furthermore, it consistently generates and sends VAMs according to the current position.
+In the following example, we regularly create a Vulnerable Road User Awareness Message (VAM) that includes sample vulnerable user data and transmits it based on the current position. The *vam_provider*, shown in Figure 5, is responsible for delivering VAMs to *cube-its*. It subscribes to receive position updates and publishes a VAM to the */its/vam_provided* topic, where the VA facility in *cube-its* handles the transmission of the VAM. Furthermore, it consistently generates and sends VAMs according to the current position.
 
 **Subscriptions:**
 - **/its/position_vector:** The *vam_provider* subscribes to this topic to receive continuous updates regarding the current position.
