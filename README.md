@@ -144,17 +144,17 @@ In the following example, we regularly create a Collective Perception Message (C
 - **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to *cube-its* on this topic for transmission.
 
 
-### Vulnerable Road User Message
+### Vulnerable Road User Awareness Message
 
-![Figure 5 - Project vam_provider](images/cpm_provider.png "Figure 5 - Project vam_provider")
+![Figure 5 - Project vam_provider](images/vam_provider.png "Figure 5 - Project vam_provider")
 
-In the following example, we regularly create a Collective Perception Message (CPM) that includes sample Perceived Object data and transmits it based on the current position. The *cpm_provider*, illustrated in Figure 4, is tasked with supplying CPMs to *cube-its*. It subscribes to receive position updates and publishes a CPM to the */its/cpm_provided* topic, where the CPS facility in *cube-its* handles the transmission of the CPM. Furthermore, it consistently generates and sends CPMs according to the current position.
+In the following example, we regularly create a Vulnerable Road User Awareness Message (VAM) that includes sample vulnerable user data and transmits it based on the current position. The vam_provider, shown in Figure 5, is responsible for delivering VAMs to *cube-its*. It subscribes to receive position updates and publishes a CPM to the */its/vam_provided* topic, where the VA facility in *cube-its* handles the transmission of the VAM. Furthermore, it consistently generates and sends VAMs according to the current position.
 
 **Subscriptions:**
 - **/its/position_vector:** The *vam_provider* subscribes to this topic to receive continuous updates regarding the current position.
 
 **Publisher:**
-- **/its/vam_provided:** The *cpm_provider* provides the generated VAM to *cube-its* on this topic for transmission.
+- **/its/vam_provided:** The *vam_provider* provides the generated VAM to *cube-its* on this topic for transmission.
 
 ### Stationary Vehicle Warning Trigger
 
