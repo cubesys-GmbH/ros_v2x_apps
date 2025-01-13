@@ -140,7 +140,7 @@ In the following example, we regularly create a Collective Perception Message (C
 **Publisher:**
 - **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to *cube-its* on this topic for transmission.
 
-### Stationary Vehicle Warning (StVeWa) Trigger
+### Stationary Vehicle Warning Trigger
 
 ![Figure 5 - Stationary Vehicle Warning (StVeWa)](images/stationary_vehicle.png "Figure 5 - Stationary Vehicle Warning (StVeWa)")
 
