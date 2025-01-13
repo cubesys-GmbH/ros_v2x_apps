@@ -6,6 +6,7 @@ This repository provides examples demonstrating how to develop and run your own 
    - 1.1 [Component description](#component-description)
    - 1.2 [Compatible ETSI ITS messages](#compatible-ETSI-ITS-messages)
    - 1.3 [Conformance validation](#conformance-validation)
+   - 1.4 [Supported applications](#supported-applications)
 2. [ROS 2](#ros-2)
    - 2.1 [Node visibility](#node-visibility)
 3. [Prerequisites](#prerequisites)
@@ -47,9 +48,21 @@ The *cube-its* framework incorporates the [*etsi_its_messages*](https://github.c
 | :soon: | VAM | VRU Awareness Message | - | [TS 103 300-3 V2.2.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/10330003/02.02.01_60/ts_10330003v020201p.pdf) | - |
 | :soon: | MAPEM | Map Extended Message | - | [TS 103 301 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/02.01.01_60/ts_103301v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/is_ts103301/-/tree/v2.1.1?ref_type=tags)) | - |
 | :soon: | SPATEM | Signal Phase and Timing Extended Message | - | [TS 103 301 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/02.01.01_60/ts_103301v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/is_ts103301/-/tree/v2.1.1?ref_type=tags)) | - |
+
 ### Conformance validation
 
 The *cube-its* framework is validated using the ETSI conformance validation framework, as specified in [ETSI TR 103 099 V1.5.1](https://www.etsi.org/deliver/etsi_tr/103000_103099/103099/01.05.01_60/tr_103099v010501p.pdf).
+
+### Supported applications
+
+This section provides an overview of the supported applications profiled and specified by various C-ITS platforms and consortia, including [C-ROADS](https://www.c-roads.eu/platform.html), the [Car-2-Car Communication Consortium (C2C-CC)](https://www.car-2-car.org/), the [Connected Motorcycle Consortium (CMC)](https://www.cmc-info.net/), and others.
+For simplicity, the implementation of triggering conditions is omitted here due to the lack of in-vehicle information.
+
+Please note that application profiling can always be achieved by configuring the specified message values and applying the appropriate trigger conditions. Examples of how to configure the values for various messages, such as DENM, CPM, VAM etc. can be found in [code examples](#code-examples).
+
+| Status | Acronym | Name | Specification | Supported in cube-its |
+| --- | --- | --- | --- | --- |
+| :white_check_mark: | StVeWa | Triggering Conditions and Data Quality Stationary Vehicle Warning | [C2C-CC RS 2006 Stationary Vehicle R1.6.7](https://www.car-2-car.org/fileadmin/documents/Basic_System_Profile/Release_1.6.7/C2CCC_RS_2006_StationaryVehicle_R167.pdf) | :soon: |
 
 ## ROS 2
 
@@ -89,7 +102,8 @@ dev_ws
 │   ├── cam_listener.py
 │   ├── cpm_provider.py
 │   ├── denm_node.py
-│   └── ...
+│   └── c2c
+|       ├── stationary_vehicle_trigger.py
 ...
 ```
 
@@ -125,6 +139,17 @@ In the following example, we regularly create a Collective Perception Message (C
 
 **Publisher:**
 - **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to *cube-its* on this topic for transmission.
+
+### Stationary Vehicle Warning Trigger
+
+![Figure 5 - Stationary Vehicle Warning (StVeWa)](images/stationary_vehicle.png "Figure 5 - Stationary Vehicle Warning (StVeWa)")
+
+The *stationary_vehicle*, depicted in Figure 5, initiates a Stationary Vehicle Warning (StVeWa) using the facility service on cube-its.
+In this scenario, our client application, *stationary_vehicle*, sends a single request in order to trigger StVeWa, which is acknowledged by a response from the facility service.
+Upon successfully triggering the warning, *cube-its* continuously transmits the StVeWa message, a DENM message profiled by [C2C-CC](https://www.car-2-car.org/), until the facility service processes a termination request.
+
+**Services:**
+- **/c2c/stationary_vehicle_request:** The *stationary_vehicle* can use this service call to trigger or terminate a stationary vehicle warning on *cube-its*.
 
 ## Build and run nodes
 
