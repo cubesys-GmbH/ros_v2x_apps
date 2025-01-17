@@ -14,7 +14,7 @@ This repository provides examples demonstrating how to develop and run your own 
    - 4.1 [Cooperative Awareness Message (CAM)](#cooperative-awareness-message)
    - 4.2 [Decentralized Environmental Notification Message (DENM)](#decentralized-environmental-notification-message)
    - 4.3 [Collective Perception Message (CPM)](#collective-perception-message)
-   - 4.4 [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-message)
+   - 4.4 [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-awareness-message)
    - 4.5 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 5. [Build and run nodes](#build-and-run-nodes)
 
