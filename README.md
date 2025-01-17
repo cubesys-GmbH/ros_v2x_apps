@@ -14,6 +14,8 @@ This repository provides examples demonstrating how to develop and run your own 
    - 4.1 [Cooperative Awareness Message (CAM)](#cooperative-awareness-message)
    - 4.2 [Decentralized Environmental Notification Message (DENM)](#decentralized-environmental-notification-message)
    - 4.3 [Collective Perception Message (CPM)](#collective-perception-message)
+   - 4.4 [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-message)
+   - 4.5 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 5. [Build and run nodes](#build-and-run-nodes)
 
 ## cube-its <img src="https://img.shields.io/badge/latest-v1.2.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
@@ -45,7 +47,7 @@ The *cube-its* framework incorporates the [*etsi_its_messages*](https://github.c
 | :white_check_mark: | CAM | Cooperative Awareness Message | [EN 302 637-2 V1.4.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263702/01.04.01_60/en_30263702v010401p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/cam_en302637_2)) | - | >=v1.0.0 |
 | :white_check_mark: | DENM | Decentralized Environmental Notification Message | [EN 302 637-3 V1.3.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263703/01.03.01_60/en_30263703v010301p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/denm_en302637_3)) | - | >=v1.0.0 |
 | :white_check_mark: | CPM | Collective Perception Message | - | [TS 103 324 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103324/02.01.01_60/ts_103324v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/cpm_ts103324)) | >=v1.2.0 |
-| :soon: | VAM | VRU Awareness Message | - | [TS 103 300-3 V2.2.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/10330003/02.02.01_60/ts_10330003v020201p.pdf) | - |
+| :white_check_mark: | VAM | Vulnerable Road User Awareness Message | - | [TS 103 300-3 V2.2.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/10330003/02.02.01_60/ts_10330003v020201p.pdf) | - |
 | :soon: | MAPEM | Map Extended Message | - | [TS 103 301 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/02.01.01_60/ts_103301v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/is_ts103301/-/tree/v2.1.1?ref_type=tags)) | - |
 | :soon: | SPATEM | Signal Phase and Timing Extended Message | - | [TS 103 301 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/02.01.01_60/ts_103301v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/is_ts103301/-/tree/v2.1.1?ref_type=tags)) | - |
 
@@ -102,6 +104,7 @@ dev_ws
 │   ├── cam_listener.py
 │   ├── cpm_provider.py
 │   ├── denm_node.py
+│   └── vam_provider.py
 │   └── c2c
 |       ├── stationary_vehicle_trigger.py
 ...
@@ -140,11 +143,24 @@ In the following example, we regularly create a Collective Perception Message (C
 **Publisher:**
 - **/its/cpm_provided:** The *cpm_provider* provides the generated CPM to *cube-its* on this topic for transmission.
 
+
+### Vulnerable Road User Awareness Message
+
+![Figure 5 - Project vam_provider](images/vam_provider.png "Figure 5 - Project vam_provider")
+
+In the following example, we regularly create a Vulnerable Road User Awareness Message (VAM) that includes sample vulnerable user data and transmits it based on the current position. The *vam_provider*, shown in Figure 5, is responsible for delivering VAMs to *cube-its*. It subscribes to receive position updates and publishes a VAM to the */its/vam_provided* topic, where the VA facility in *cube-its* handles the transmission of the VAM. Furthermore, it consistently generates and sends VAMs according to the current position.
+
+**Subscriptions:**
+- **/its/position_vector:** The *vam_provider* subscribes to this topic to receive continuous updates regarding the current position.
+
+**Publisher:**
+- **/its/vam_provided:** The *vam_provider* provides the generated VAM to *cube-its* on this topic for transmission.
+
 ### Stationary Vehicle Warning Trigger
 
-![Figure 5 - Stationary Vehicle Warning (StVeWa)](images/stationary_vehicle.png "Figure 5 - Stationary Vehicle Warning (StVeWa)")
+![Figure 6 - Stationary Vehicle Warning (StVeWa)](images/stationary_vehicle.png "Figure 6 - Stationary Vehicle Warning (StVeWa)")
 
-The *stationary_vehicle*, depicted in Figure 5, initiates a Stationary Vehicle Warning (StVeWa) using the facility service on cube-its.
+The *stationary_vehicle*, depicted in Figure 6, initiates a Stationary Vehicle Warning (StVeWa) using the facility service on cube-its.
 In this scenario, our client application, *stationary_vehicle*, sends a single request in order to trigger StVeWa, which is acknowledged by a response from the facility service.
 Upon successfully triggering the warning, *cube-its* continuously transmits the StVeWa message, a DENM message profiled by [C2C-CC](https://www.car-2-car.org/), until the facility service processes a termination request.
 
