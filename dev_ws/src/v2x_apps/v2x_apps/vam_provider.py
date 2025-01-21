@@ -122,9 +122,9 @@ class VamProvider(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    cpm_provider = VamProvider()
-    rclpy.spin(cpm_provider)
-    cpm_provider.destroy_node()
+    vam_provider = VamProvider()
+    rclpy.spin(vam_provider)
+    vam_provider.destroy_node()
     rclpy.shutdown()
 
 
