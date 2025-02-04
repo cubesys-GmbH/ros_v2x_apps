@@ -25,6 +25,7 @@ setup(
                 'denm_node = v2x_apps.denm_node:main',
                 'cpm_provider = v2x_apps.cpm_provider:main',
                 'vam_provider = v2x_apps.vam_provider:main',
+                'spatem_provider = v2x_apps.spatem_provider:main',
                 'stationary_vehicle = c2c.stationary_vehicle_trigger:main',
         ],
 },
