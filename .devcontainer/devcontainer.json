@@ -17,6 +17,9 @@
 		"--ulimit",
 		"nofile=1024"
 	],
+	"containerEnv": {
+		"FASTRTPS_DEFAULT_PROFILES_FILE": "/home/cube/cube-its/fastrtps.xml"
+	},
 	// Mount bash history
 	"mounts": [
 		"source=projectname-bashhistory,target=/commandhistory,type=volume"
