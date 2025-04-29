@@ -3,7 +3,8 @@
 	"build": {
 		"dockerfile": "Dockerfile",
 		"args": {
-			"ROS_DISTRO": "jazzy"
+			// the version should match the cube-its container deployed on your cube:evk
+			"WORKSPACE_VERSION": "jazzy-develop-1.3.1"
 		}
 	},
 	"runArgs": [

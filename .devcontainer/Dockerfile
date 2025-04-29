@@ -1,6 +1,6 @@
 # CUBE devcontainer
-ARG ROS_DISTRO="jazzy"
-FROM ghcr.io/cubesys-gmbh/workspace:${ROS_DISTRO}
+ARG WORKSPACE_VERSION="jazzy-develop"
+FROM ghcr.io/cubesys-gmbh/workspace:${WORKSPACE_VERSION}
 SHELL ["/bin/bash", "-c"]
 
 # Change user
