@@ -18,7 +18,7 @@ This repository provides examples demonstrating how to develop and run your own 
    - 4.5 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 5. [Build and run nodes](#build-and-run-nodes)
 
-## cube-its <img src="https://img.shields.io/badge/latest-v1.2.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
+## cube-its <img src="https://img.shields.io/badge/latest-v1.3.1-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
 
 The *cube-its* framework is designed to seamlessly integrate Intelligent Transportation Systems (ITS) applications and Vehicle-to-Everything (V2X) communication capabilities within a ROS 2 environment. It facilitates data exchange and communication between vehicles and external entities such as other vehicles, infrastructure, pedestrians, and cloud systems, leveraging V2X communication technologies.
 
