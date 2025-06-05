@@ -1,0 +1,19 @@
+name: ci
+on:
+  push:
+    branches: [master]
+permissions:
+  contents: read
+  packages: write
+jobs:
+  ci:
+    strategy:
+      fail-fast: false
+      matrix:
+        workspace:
+        - humble-develop
+        - jazzy-develop
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+    with:
+      workspace: ${{ matrix.workspace }}
