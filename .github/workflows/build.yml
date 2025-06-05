@@ -16,7 +16,7 @@ env:
   IMAGE_NAME: ros_v2x_apps
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     name: build ros_v2x_apps image
     permissions:
       contents: read
