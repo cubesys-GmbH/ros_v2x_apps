@@ -17,7 +17,7 @@ This repository provides examples demonstrating how to develop and run your own 
    - 4.4 [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-awareness-message)
    - 4.5 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 5. [Build and run nodes](#build-and-run-nodes)
-6. [real-world deployments](#real-world-deployments)
+6. [Real-world deployments](#real-world-deployments)
 
 ## cube-its <img src="https://img.shields.io/badge/latest-v1.3.1-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
 
