@@ -213,5 +213,6 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 ```
 ## Real-world deployments
 
-Explore real-world scenarios that show how end users apply our technology in practical conditions. 
+Explore real-world scenarios that show how end users apply our technology in practical conditions.
+
 👉 [Check out related use cases and demos](https://www.nfiniity.com/knowledge.html) 
