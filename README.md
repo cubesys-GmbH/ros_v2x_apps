@@ -17,6 +17,7 @@ This repository provides examples demonstrating how to develop and run your own 
    - 4.4 [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-awareness-message)
    - 4.5 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 5. [Build and run nodes](#build-and-run-nodes)
+6. [real-world deployments](#real-world-deployments)
 
 ## cube-its <img src="https://img.shields.io/badge/latest-v1.3.1-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
 
@@ -210,3 +211,7 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 [INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
 ```
+## Real-world deployments
+
+Explore real-world scenarios that show how end users apply our technology in practical conditions. 
+👉 [Check out related use cases and demos](https://www.nfiniity.com/knowledge.html) 
