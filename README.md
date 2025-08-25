@@ -69,8 +69,6 @@ Please note that application profiling can always be achieved by configuring the
 | --- | --- | --- | --- | --- |
 | :white_check_mark: | StVeWa | Triggering Conditions and Data Quality Stationary Vehicle Warning | [C2C-CC RS 2006 Stationary Vehicle R1.6.7](https://www.car-2-car.org/fileadmin/documents/Basic_System_Profile/Release_1.6.7/C2CCC_RS_2006_StationaryVehicle_R167.pdf) | >=v1.3.0 |
 
----
-
 ## ROS 2
 
 ROS 2 is known as an advanced middleware for creating software for self-driving robots and even autonomous vehicles. It has a decentralized setup with nodes handling specific tasks, such as processing data from a single sensor etc. Since we will be working with ROS, it makes sense to get familiar with the environment and features of ROS.
@@ -94,6 +92,8 @@ export ROS_DOMAIN_ID=45
 ```
 
 More information about domain ID can be found here: https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html
+
+---
 
 ## Prerequisites
 - A [cube device](https://www.nfiniity.com/#hardware-section) running the *cube-its* framework
