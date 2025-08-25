@@ -69,6 +69,8 @@ Please note that application profiling can always be achieved by configuring the
 | --- | --- | --- | --- | --- |
 | :white_check_mark: | StVeWa | Triggering Conditions and Data Quality Stationary Vehicle Warning | [C2C-CC RS 2006 Stationary Vehicle R1.6.7](https://www.car-2-car.org/fileadmin/documents/Basic_System_Profile/Release_1.6.7/C2CCC_RS_2006_StationaryVehicle_R167.pdf) | >=v1.3.0 |
 
+---
+
 ## ROS 2
 
 ROS 2 is known as an advanced middleware for creating software for self-driving robots and even autonomous vehicles. It has a decentralized setup with nodes handling specific tasks, such as processing data from a single sensor etc. Since we will be working with ROS, it makes sense to get familiar with the environment and features of ROS.
@@ -96,6 +98,8 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
 ## Prerequisites
 - A [cube device](https://www.nfiniity.com/#hardware-section) running the *cube-its* framework
 - You likely already have worked with devcontainer projects in VSCode (Visual Studio Code). If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
+
+---
 
 ## Code examples
 
@@ -170,6 +174,8 @@ Upon successfully triggering the warning, *cube-its* continuously transmits the 
 **Services:**
 - **/c2c/stationary_vehicle_request:** The *stationary_vehicle* can use this service call to trigger or terminate a stationary vehicle warning on *cube-its*.
 
+---
+
 ## Build and run nodes
 
 Navigate to the root of the workspace, dev_ws:
@@ -213,6 +219,8 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 [INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
 ```
+---
+
 ## Real-world deployments
 
 Explore real-world scenarios that show how end users apply our technology in practical conditions.
