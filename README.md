@@ -55,7 +55,7 @@ The [`ros_cube_msgs`](https://github.com/cubesys-GmbH/ros_cube_msgs) package pro
 
 ### Compatible ETSI ITS messages
 
-The *cube-its* framework incorporates the [*etsi_its_messages*](https://github.com/ika-rwth-aachen/etsi_its_messages) package to facilitate the use of standardized ETSI ITS messages for V2X communication within ROS and ROS 2 environments. This integration enables developers to implement and manage V2X communication protocols, adhering to the ETSI specifications, within robotic and autonomous vehicle systems.
+The *cube-its* framework incorporates the [`etsi_its_messages`](https://github.com/ika-rwth-aachen/etsi_its_messages) package to facilitate the use of standardized ETSI ITS messages for V2X communication within ROS and ROS 2 environments. This integration enables developers to implement and manage V2X communication protocols, adhering to the ETSI specifications, within robotic and autonomous vehicle systems.
 
 | Status | Acronym | Name | EN Specification | TS Specification | Supported in cube-its |
 | --- | --- | --- | --- | --- | --- |
