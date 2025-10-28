@@ -43,7 +43,7 @@ Furthermore, *cube-its* serves as a comprehensive platform for the development, 
 
 ### Interfaces
 
-The `ros_cube_msgs` package provides a set of ROS message and service definitions for interacting with cube-its as a part of the public API. The package includes the following:
+The [`ros_cube_msgs`](https://github.com/cubesys-GmbH/ros_cube_msgs) package provides a set of ROS message and service definitions for interacting with cube-its, forming part of the public API. The package includes the following:
  Name | Description |
 | --- | --- |
 | cube_ca_msgs | Interface for Cooperative Awareness (CA) | 
