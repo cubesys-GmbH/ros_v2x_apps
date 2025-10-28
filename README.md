@@ -41,6 +41,14 @@ Furthermore, *cube-its* serves as a comprehensive platform for the development, 
 | ITS Facilities | Provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication. | 
 | Vanetza | Facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](https://www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication. | 
 
+### Interfaces
+The `ros_cube_msgs` package provides a set of ROS message and service definitions for interacting with cube-its.  
+The package includes the following:
+ Name | Description |
+| --- | --- |
+| X | A | 
+| Y | B | 
+
 ### Compatible ETSI ITS messages
 
 The *cube-its* framework incorporates the [*etsi_its_messages*](https://github.com/ika-rwth-aachen/etsi_its_messages) package to facilitate the use of standardized ETSI ITS messages for V2X communication within ROS and ROS 2 environments. This integration enables developers to implement and manage V2X communication protocols, adhering to the ETSI specifications, within robotic and autonomous vehicle systems.
