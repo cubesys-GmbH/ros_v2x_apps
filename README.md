@@ -51,7 +51,7 @@ The `ros_cube_msgs` package provides a set of ROS message and service definition
 | cube_cp_msgs | Interface for Decentralized Environmental Notification (DEN) | 
 | cube_va_msgs | Interface for Vulnerable Road Users Awareness (VA) |
 | cube_facility_msgs | Interface for facility applications |
-| cube_msgs | General interface for cube settings |
+| cube_msgs | General interface for cube settings and parameters |
 
 ### Compatible ETSI ITS messages
 
