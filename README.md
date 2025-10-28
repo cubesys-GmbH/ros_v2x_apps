@@ -47,10 +47,10 @@ The [`ros_cube_msgs`](https://github.com/cubesys-GmbH/ros_cube_msgs) package pro
  Name | Description |
 | --- | --- |
 | cube_ca_msgs | Interface for Cooperative Awareness (CA) | 
-| cube_den_msgs | Interface for Collective Perception (CA) | 
-| cube_cp_msgs | Interface for Decentralized Environmental Notification (DEN) | 
+| cube_den_msgs | Interface for Decentralized Environmental Notification (DEN) | 
+| cube_cp_msgs | Interface for Collective Perception (CP) | 
 | cube_va_msgs | Interface for Vulnerable Road Users Awareness (VA) |
-| cube_facility_msgs | Interface for facility applications |
+| cube_facility_msgs | Interface supporting ITS facilities|
 | cube_msgs | General interface for cube settings and parameters |
 
 ### Compatible ETSI ITS messages
