@@ -42,12 +42,17 @@ Furthermore, *cube-its* serves as a comprehensive platform for the development, 
 | Vanetza | Facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](https://www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication. | 
 
 ### Interfaces
-The `ros_cube_msgs` package provides a set of ROS message and service definitions for interacting with cube-its.  
+
+The `ros_cube_msgs` package provides a set of ROS message and service definitions for interacting with cube-its as a part of the public API.  
 The package includes the following:
  Name | Description |
 | --- | --- |
-| X | A | 
-| Y | B | 
+| cube_ca_msgs | Interface for Cooperative Awareness (CA) | 
+| cube_den_msgs | Interface for Collective Perception (CA) | 
+| cube_cp_msgs | Interface for Decentralized Environmental Notification (DEN) | 
+| cube_va_msgs | Interface for Vulnerable Road Users Awareness (VA) |
+| cube_facility_msgs | Interface for facility applications |
+| cube_msgs | General interface for cube settings |
 
 ### Compatible ETSI ITS messages
 
