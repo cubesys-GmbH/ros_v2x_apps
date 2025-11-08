@@ -6,9 +6,14 @@ SHELL ["/bin/bash", "-c"]
 # Change user
 USER root
 
+# Ensure valid ROS2 public key is installed (might have expired since creation of workspace image)
+RUN wget -O /usr/share/keyrings/ros-archive-keyring.gpg \
+    https://raw.githubusercontent.com/ros/rosdistro/master/ros.key
+
 # Install system packages
-RUN apt-get update && export DEBIAN_FRONTEND=noninteractive && apt-get -y install --no-install-recommends \
-    git
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
+    apt-get -y install --no-install-recommends git
 
 ARG USERNAME="cube"
 ARG USER_HOME_DIR=/home/${USERNAME}
