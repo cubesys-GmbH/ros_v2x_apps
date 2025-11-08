@@ -34,7 +34,7 @@
 				"ms-vscode.cpptools",
 				"ms-vscode.cpptools-extension-pack",
 				"ms-python.python",
-				"ms-iot.vscode-ros"
+				"ranch-hand-robotics.rde-pack"
 			]
 		},
 		"settings": {
