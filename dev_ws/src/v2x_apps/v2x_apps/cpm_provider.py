@@ -118,10 +118,10 @@ class CpmProvider(Node):
 
         # Container
         container = cpm_msg.WrappedCpmContainer()
-        container.container_id.value = cpm_msg.CpmContainerId.PERCEIVED_OBJECT_CONTAINER
-        container.container_data.choice.value = cpm_msg.CpmContainerId.PERCEIVED_OBJECT_CONTAINER
-        container.container_data.perceived_object_container.number_of_perceived_objects.value = 1
-        container.container_data.perceived_object_container.perceived_objects.array = [
+        container.container_id.value = cpm_msg.WrappedCpmContainer.CHOICE_CONTAINER_DATA_PERCEIVED_OBJECT_CONTAINER
+        container.container_data_perceived_object_container = cpm_msg.PerceivedObjectContainer()
+        container.container_data_perceived_object_container.number_of_perceived_objects.value = 1
+        container.container_data_perceived_object_container.perceived_objects.array = [
             perceived_object]
 
         cpm = cpm_msg.CollectivePerceptionMessage()
