@@ -69,46 +69,46 @@ class TestScaledValue:
 
 
 # Subclasses pin the right ETSI scaling factor and sentinel constants.
-@pytest.mark.parametrize('subclass,msg_module,attr', [
-    (CpmLatitudeValue, cpm_msg, 'Latitude'),
-    (CpmLongitudeValue, cpm_msg, 'Longitude'),
-    (VamLatitudeValue, vam_msg, 'Latitude'),
-    (VamLongitudeValue, vam_msg, 'Longitude'),
-])
-def test_lat_lon_uses_tenths_of_microdegrees(subclass, msg_module, attr):
+# Each entry is (subclass, expected_unavailable_sentinel).
+LAT_LON_CASES = [
+    (CpmLatitudeValue, cpm_msg.Latitude.UNAVAILABLE),
+    (CpmLongitudeValue, cpm_msg.Longitude.UNAVAILABLE),
+    (VamLatitudeValue, vam_msg.Latitude.UNAVAILABLE),
+    (VamLongitudeValue, vam_msg.Longitude.UNAVAILABLE),
+]
+SEMI_AXIS_CASES = [
+    (CpmSemiAxisLengthValue, cpm_msg.SemiAxisLength.OUT_OF_RANGE),
+    (VamSemiAxisLengthValue, vam_msg.SemiAxisLength.OUT_OF_RANGE),
+]
+ALTITUDE_CASES = [
+    (CpmAltitudeValue, cpm_msg.AltitudeValue.UNAVAILABLE),
+    (VamAltitudeValue, vam_msg.AltitudeValue.UNAVAILABLE),
+]
+
+
+@pytest.mark.parametrize('subclass', [case[0] for case in LAT_LON_CASES])
+def test_lat_lon_uses_tenths_of_microdegrees(subclass):
     # 1e-7 deg encodes to 1 in ETSI's 0.1-microdegree units.
     assert subclass(1e-7).get() == 1
 
 
-@pytest.mark.parametrize('subclass,msg_module,attr', [
-    (CpmLatitudeValue, cpm_msg, 'Latitude'),
-    (CpmLongitudeValue, cpm_msg, 'Longitude'),
-    (VamLatitudeValue, vam_msg, 'Latitude'),
-    (VamLongitudeValue, vam_msg, 'Longitude'),
-])
-def test_lat_lon_nan_returns_msg_unavailable(subclass, msg_module, attr):
-    expected = getattr(msg_module, attr).UNAVAILABLE
-    assert subclass(math.nan).get() == expected
+@pytest.mark.parametrize('subclass,expected_unavailable', LAT_LON_CASES)
+def test_lat_lon_nan_returns_msg_unavailable(subclass, expected_unavailable):
+    assert subclass(math.nan).get() == expected_unavailable
 
 
-@pytest.mark.parametrize('subclass,msg_module', [
-    (CpmSemiAxisLengthValue, cpm_msg),
-    (VamSemiAxisLengthValue, vam_msg),
-])
-def test_semi_axis_overflow_uses_out_of_range_not_unavailable(subclass, msg_module):
+@pytest.mark.parametrize('subclass,expected_out_of_range', SEMI_AXIS_CASES)
+def test_semi_axis_overflow_uses_out_of_range_not_unavailable(subclass, expected_out_of_range):
     # A clearly oversized confidence should hit OUT_OF_RANGE, not UNAVAILABLE.
-    assert subclass(1e9).get() == msg_module.SemiAxisLength.OUT_OF_RANGE
+    assert subclass(1e9).get() == expected_out_of_range
 
 
-@pytest.mark.parametrize('subclass', [CpmAltitudeValue, VamAltitudeValue])
+@pytest.mark.parametrize('subclass', [case[0] for case in ALTITUDE_CASES])
 def test_altitude_uses_centimetres(subclass):
     # 100 m -> 10 000 cm.
     assert subclass(100.0).get() == 10000
 
 
-@pytest.mark.parametrize('subclass,msg_module', [
-    (CpmAltitudeValue, cpm_msg),
-    (VamAltitudeValue, vam_msg),
-])
-def test_altitude_nan_returns_msg_unavailable(subclass, msg_module):
-    assert subclass(math.nan).get() == msg_module.AltitudeValue.UNAVAILABLE
+@pytest.mark.parametrize('subclass,expected_unavailable', ALTITUDE_CASES)
+def test_altitude_nan_returns_msg_unavailable(subclass, expected_unavailable):
+    assert subclass(math.nan).get() == expected_unavailable
