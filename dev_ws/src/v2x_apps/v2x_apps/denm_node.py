@@ -1,10 +1,10 @@
-import etsi_its_denm_msgs.msg as denm_msg
 import math
-import rclpy
 
 from cube_den_msgs.srv import Transmission
-from vanetza_msgs.msg import GeoNetArea, TrafficClass, PositionVector
+import etsi_its_denm_msgs.msg as denm_msg
+import rclpy
 from rclpy.node import Node
+from vanetza_msgs.msg import GeoNetArea, PositionVector, TrafficClass
 
 
 class DenmNode(Node):

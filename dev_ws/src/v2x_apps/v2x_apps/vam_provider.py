@@ -1,8 +1,8 @@
 import math
-import rclpy
-import etsi_its_vam_ts_msgs.msg as vam_msg
-
 from typing import Optional
+
+import etsi_its_vam_ts_msgs.msg as vam_msg
+import rclpy
 from rclpy.node import Node
 from vanetza_msgs.msg import PositionVector
 
@@ -18,9 +18,9 @@ class VamValue:
         self.out_of_range_value = unavailable
         self.unavailable_value = unavailable
 
-    def range(self, min, max, out_of_range=None):
-        self.min_value = min
-        self.max_value = max
+    def set_range(self, min_value, max_value, out_of_range=None):
+        self.min_value = min_value
+        self.max_value = max_value
         if out_of_range is not None:
             self.out_of_range_value = out_of_range
 
@@ -39,20 +39,20 @@ class VamValue:
 class VamLatitudeValue(VamValue):
     def __init__(self, value):
         super().__init__(value, 1e7, vam_msg.Latitude.UNAVAILABLE)
-        self.range(vam_msg.Latitude.MIN, vam_msg.Latitude.MAX)
+        self.set_range(vam_msg.Latitude.MIN, vam_msg.Latitude.MAX)
 
 
 class VamLongitudeValue(VamValue):
     def __init__(self, value):
         super().__init__(value, 1e7, vam_msg.Longitude.UNAVAILABLE)
-        self.range(vam_msg.Longitude.MIN, vam_msg.Longitude.MAX)
+        self.set_range(vam_msg.Longitude.MIN, vam_msg.Longitude.MAX)
 
 
 # Altitude and semi-axis lengths are encoded in centimetres (scale 1e2).
 class VamSemiAxisLengthValue(VamValue):
     def __init__(self, value):
         super().__init__(value, 1e2, vam_msg.SemiAxisLength.UNAVAILABLE)
-        self.range(
+        self.set_range(
             vam_msg.SemiAxisLength.MIN,
             vam_msg.SemiAxisLength.MAX,
             vam_msg.SemiAxisLength.OUT_OF_RANGE,
@@ -62,7 +62,7 @@ class VamSemiAxisLengthValue(VamValue):
 class VamAltitudeValue(VamValue):
     def __init__(self, value):
         super().__init__(value, 1e2, vam_msg.AltitudeValue.UNAVAILABLE)
-        self.range(vam_msg.AltitudeValue.MIN, vam_msg.AltitudeValue.MAX)
+        self.set_range(vam_msg.AltitudeValue.MIN, vam_msg.AltitudeValue.MAX)
 
 
 class VamProvider(Node):

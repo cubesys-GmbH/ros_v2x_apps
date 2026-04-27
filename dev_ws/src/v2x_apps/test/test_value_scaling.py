@@ -1,9 +1,8 @@
 import math
 
-import pytest
-
 import etsi_its_cpm_ts_msgs.msg as cpm_msg
 import etsi_its_vam_ts_msgs.msg as vam_msg
+import pytest
 
 from v2x_apps.cpm_provider import (
     CpmAltitudeValue,
@@ -27,45 +26,45 @@ from v2x_apps.vam_provider import (
 class TestScaledValue:
     def test_finite_in_range_is_scaled_and_rounded(self, cls):
         v = cls(1.5, scale=10.0, unavailable=99)
-        v.range(0, 100)
+        v.set_range(0, 100)
         assert v.get() == 15
 
     def test_value_above_max_returns_out_of_range(self, cls):
         v = cls(50.0, scale=1.0, unavailable=99)
-        v.range(0, 10, out_of_range=42)
+        v.set_range(0, 10, out_of_range=42)
         assert v.get() == 42
 
     def test_value_below_min_returns_out_of_range(self, cls):
         v = cls(-50.0, scale=1.0, unavailable=99)
-        v.range(0, 10, out_of_range=42)
+        v.set_range(0, 10, out_of_range=42)
         assert v.get() == 42
 
     def test_out_of_range_falls_back_to_unavailable_when_unset(self, cls):
         v = cls(50.0, scale=1.0, unavailable=99)
-        v.range(0, 10)
+        v.set_range(0, 10)
         assert v.get() == 99
 
     def test_nan_returns_unavailable(self, cls):
         v = cls(math.nan, scale=1.0, unavailable=99)
-        v.range(0, 10)
+        v.set_range(0, 10)
         assert v.get() == 99
 
     def test_inf_returns_unavailable(self, cls):
         v = cls(math.inf, scale=1.0, unavailable=99)
-        v.range(0, 10)
+        v.set_range(0, 10)
         assert v.get() == 99
 
     def test_rounds_to_nearest(self, cls):
         v_low = cls(1.4, scale=1.0, unavailable=99)
-        v_low.range(0, 10)
+        v_low.set_range(0, 10)
         v_high = cls(1.6, scale=1.0, unavailable=99)
-        v_high.range(0, 10)
+        v_high.set_range(0, 10)
         assert v_low.get() == 1
         assert v_high.get() == 2
 
     def test_returns_python_int(self, cls):
         v = cls(1.0, scale=1.0, unavailable=99)
-        v.range(0, 10)
+        v.set_range(0, 10)
         assert isinstance(v.get(), int)
 
 

@@ -1,8 +1,8 @@
 import math
-import rclpy
-import etsi_its_cpm_ts_msgs.msg as cpm_msg
-
 from typing import Optional
+
+import etsi_its_cpm_ts_msgs.msg as cpm_msg
+import rclpy
 from rclpy.node import Node
 from vanetza_msgs.msg import PositionVector
 
@@ -18,9 +18,9 @@ class CpmValue:
         self.out_of_range_value = unavailable
         self.unavailable_value = unavailable
 
-    def range(self, min, max, out_of_range=None):
-        self.min_value = min
-        self.max_value = max
+    def set_range(self, min_value, max_value, out_of_range=None):
+        self.min_value = min_value
+        self.max_value = max_value
         if out_of_range is not None:
             self.out_of_range_value = out_of_range
 
@@ -39,20 +39,20 @@ class CpmValue:
 class CpmLatitudeValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e7, cpm_msg.Latitude.UNAVAILABLE)
-        self.range(cpm_msg.Latitude.MIN, cpm_msg.Latitude.MAX)
+        self.set_range(cpm_msg.Latitude.MIN, cpm_msg.Latitude.MAX)
 
 
 class CpmLongitudeValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e7, cpm_msg.Longitude.UNAVAILABLE)
-        self.range(cpm_msg.Longitude.MIN, cpm_msg.Longitude.MAX)
+        self.set_range(cpm_msg.Longitude.MIN, cpm_msg.Longitude.MAX)
 
 
 # Altitude and semi-axis lengths are encoded in centimetres (scale 1e2).
 class CpmSemiAxisLengthValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e2, cpm_msg.SemiAxisLength.UNAVAILABLE)
-        self.range(
+        self.set_range(
             cpm_msg.SemiAxisLength.MIN,
             cpm_msg.SemiAxisLength.MAX,
             cpm_msg.SemiAxisLength.OUT_OF_RANGE,
@@ -62,7 +62,7 @@ class CpmSemiAxisLengthValue(CpmValue):
 class CpmAltitudeValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e2, cpm_msg.AltitudeValue.UNAVAILABLE)
-        self.range(cpm_msg.AltitudeValue.MIN, cpm_msg.AltitudeValue.MAX)
+        self.set_range(cpm_msg.AltitudeValue.MIN, cpm_msg.AltitudeValue.MAX)
 
 
 class CpmProvider(Node):

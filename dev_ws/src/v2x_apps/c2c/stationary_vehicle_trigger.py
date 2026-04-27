@@ -22,11 +22,10 @@
 # SOFTWARE.
 # ==============================================================================
 
-import rclpy
 import cube_facility_msgs.msg as facility_msg
-
-from rclpy.node import Node
 from cube_facility_msgs.srv import StationaryVehicleRequest
+import rclpy
+from rclpy.node import Node
 
 
 class StationaryVehicleTrigger(Node):
