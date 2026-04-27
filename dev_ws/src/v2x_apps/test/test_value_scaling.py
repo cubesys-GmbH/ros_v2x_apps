@@ -1,0 +1,114 @@
+import math
+
+import etsi_its_cpm_ts_msgs.msg as cpm_msg
+import etsi_its_vam_ts_msgs.msg as vam_msg
+import pytest
+
+from v2x_apps.cpm_provider import (
+    CpmAltitudeValue,
+    CpmLatitudeValue,
+    CpmLongitudeValue,
+    CpmSemiAxisLengthValue,
+    CpmValue,
+)
+from v2x_apps.vam_provider import (
+    VamAltitudeValue,
+    VamLatitudeValue,
+    VamLongitudeValue,
+    VamSemiAxisLengthValue,
+    VamValue,
+)
+
+
+# CpmValue and VamValue are independent classes with the same contract,
+# so the base-class behaviour is exercised against both.
+@pytest.mark.parametrize('cls', [CpmValue, VamValue])
+class TestScaledValue:
+    def test_finite_in_range_is_scaled_and_rounded(self, cls):
+        v = cls(1.5, scale=10.0, unavailable=99)
+        v.set_range(0, 100)
+        assert v.get() == 15
+
+    def test_value_above_max_returns_out_of_range(self, cls):
+        v = cls(50.0, scale=1.0, unavailable=99)
+        v.set_range(0, 10, out_of_range=42)
+        assert v.get() == 42
+
+    def test_value_below_min_returns_out_of_range(self, cls):
+        v = cls(-50.0, scale=1.0, unavailable=99)
+        v.set_range(0, 10, out_of_range=42)
+        assert v.get() == 42
+
+    def test_out_of_range_falls_back_to_unavailable_when_unset(self, cls):
+        v = cls(50.0, scale=1.0, unavailable=99)
+        v.set_range(0, 10)
+        assert v.get() == 99
+
+    def test_nan_returns_unavailable(self, cls):
+        v = cls(math.nan, scale=1.0, unavailable=99)
+        v.set_range(0, 10)
+        assert v.get() == 99
+
+    def test_inf_returns_unavailable(self, cls):
+        v = cls(math.inf, scale=1.0, unavailable=99)
+        v.set_range(0, 10)
+        assert v.get() == 99
+
+    def test_rounds_to_nearest(self, cls):
+        v_low = cls(1.4, scale=1.0, unavailable=99)
+        v_low.set_range(0, 10)
+        v_high = cls(1.6, scale=1.0, unavailable=99)
+        v_high.set_range(0, 10)
+        assert v_low.get() == 1
+        assert v_high.get() == 2
+
+    def test_returns_python_int(self, cls):
+        v = cls(1.0, scale=1.0, unavailable=99)
+        v.set_range(0, 10)
+        assert isinstance(v.get(), int)
+
+
+# Subclasses pin the right ETSI scaling factor and sentinel constants.
+# Each entry is (subclass, expected_unavailable_sentinel).
+LAT_LON_CASES = [
+    (CpmLatitudeValue, cpm_msg.Latitude.UNAVAILABLE),
+    (CpmLongitudeValue, cpm_msg.Longitude.UNAVAILABLE),
+    (VamLatitudeValue, vam_msg.Latitude.UNAVAILABLE),
+    (VamLongitudeValue, vam_msg.Longitude.UNAVAILABLE),
+]
+SEMI_AXIS_CASES = [
+    (CpmSemiAxisLengthValue, cpm_msg.SemiAxisLength.OUT_OF_RANGE),
+    (VamSemiAxisLengthValue, vam_msg.SemiAxisLength.OUT_OF_RANGE),
+]
+ALTITUDE_CASES = [
+    (CpmAltitudeValue, cpm_msg.AltitudeValue.UNAVAILABLE),
+    (VamAltitudeValue, vam_msg.AltitudeValue.UNAVAILABLE),
+]
+
+
+@pytest.mark.parametrize('subclass', [case[0] for case in LAT_LON_CASES])
+def test_lat_lon_uses_tenths_of_microdegrees(subclass):
+    # 1e-7 deg encodes to 1 in ETSI's 0.1-microdegree units.
+    assert subclass(1e-7).get() == 1
+
+
+@pytest.mark.parametrize('subclass,expected_unavailable', LAT_LON_CASES)
+def test_lat_lon_nan_returns_msg_unavailable(subclass, expected_unavailable):
+    assert subclass(math.nan).get() == expected_unavailable
+
+
+@pytest.mark.parametrize('subclass,expected_out_of_range', SEMI_AXIS_CASES)
+def test_semi_axis_overflow_uses_out_of_range_not_unavailable(subclass, expected_out_of_range):
+    # A clearly oversized confidence should hit OUT_OF_RANGE, not UNAVAILABLE.
+    assert subclass(1e9).get() == expected_out_of_range
+
+
+@pytest.mark.parametrize('subclass', [case[0] for case in ALTITUDE_CASES])
+def test_altitude_uses_centimetres(subclass):
+    # 100 m -> 10 000 cm.
+    assert subclass(100.0).get() == 10000
+
+
+@pytest.mark.parametrize('subclass,expected_unavailable', ALTITUDE_CASES)
+def test_altitude_nan_returns_msg_unavailable(subclass, expected_unavailable):
+    assert subclass(math.nan).get() == expected_unavailable

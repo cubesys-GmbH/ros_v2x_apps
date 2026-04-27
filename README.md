@@ -17,7 +17,8 @@ This repository provides examples demonstrating how to develop and run your own 
    - 4.4 [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-awareness-message)
    - 4.5 [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 5. [Build and run nodes](#build-and-run-nodes)
-6. [Real-world deployments](#real-world-deployments)
+6. [Run tests](#run-tests)
+7. [Real-world deployments](#real-world-deployments)
 
 ---
 
@@ -88,7 +89,7 @@ ROS 2 is known as an advanced middleware for creating software for self-driving 
 ### Node visibility 
 In order to run ROS 2 nodes in the same ROS 2 environment, ROS 2 introduces a domain mechanism.
 By default *ROS_LOCALHOST_ONLY* is set to 1, which means that *cube-its*, its topics, services, and actions will not be visible to other ROS 2 environments on the local network. 
-By setting *ROS_LOCALHOST_ONLY=0* enables ROS 2 nodes from v2x_apps and *cube_its* to discover each other, if they share the same domain (default: *ROS_DOMAIN_ID=42*).
+By setting *ROS_LOCALHOST_ONLY=0* enables ROS 2 nodes from v2x_apps and *cube-its* to discover each other, if they share the same domain (default: *ROS_DOMAIN_ID=42*).
 You can simply disable the localhost only setting by typing in a terminal: 
 
 ```
@@ -117,16 +118,23 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
 
 ```bash
 dev_ws
-├── src/v2x_apps
-│   ├── btp_listener.py
-│   ├── btp_sender.py
-│   ├── cam_listener.py
-│   ├── cpm_provider.py
-│   ├── denm_node.py
-│   └── vam_provider.py
-│   └── c2c
-|       ├── stationary_vehicle_trigger.py
-...
+└── src/v2x_apps
+    ├── package.xml
+    ├── setup.cfg
+    ├── setup.py
+    ├── v2x_apps
+    │   ├── btp_listener.py
+    │   ├── btp_sender.py
+    │   ├── cam_listener.py
+    │   ├── cpm_provider.py
+    │   ├── denm_node.py
+    │   └── vam_provider.py
+    ├── c2c
+    │   └── stationary_vehicle_trigger.py
+    └── test
+        ├── test_flake8.py
+        ├── test_pep257.py
+        └── test_value_scaling.py
 ```
 
 ### Cooperative Awareness Message
@@ -208,11 +216,13 @@ Still in the same terminal, source the setup files:
 source install/setup.bash
 ```
 
-Now run the corresponing node. In this case 'cam_listener':
+Now run the corresponding node. In this case `cam_listener`:
 
 ```
 ros2 run v2x_apps cam_listener
 ```
+
+The package exposes the following executables: `cam_listener`, `denm_node`, `cpm_provider`, `vam_provider`, `btp_listener`, `btp_sender`, `stationary_vehicle`.
 
 
 The node is running correctly when you see the following terminal output:
@@ -231,6 +241,18 @@ When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
 [INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
 ```
+---
+
+## Run tests
+
+From the root of the workspace, build and test:
+
+```
+colcon build --packages-select v2x_apps
+colcon test --packages-select v2x_apps
+colcon test-result --all --verbose
+```
+
 ---
 
 ## Real-world deployments

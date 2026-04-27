@@ -1,13 +1,15 @@
 import math
-import rclpy
-import etsi_its_vam_ts_msgs.msg as vam_msg
-
 from typing import Optional
+
+import etsi_its_vam_ts_msgs.msg as vam_msg
+import rclpy
 from rclpy.node import Node
 from vanetza_msgs.msg import PositionVector
 
+
 class VamValue:
-    """ Represents a VAM value with scaling and range checking. """
+    """Represent a VAM value with scaling and range checking."""
+
     def __init__(self, value, scale=1.0, unavailable=math.nan):
         self.value = value
         self.scaling_factor = scale
@@ -16,9 +18,9 @@ class VamValue:
         self.out_of_range_value = unavailable
         self.unavailable_value = unavailable
 
-    def range(self, min, max, out_of_range=None):
-        self.min_value = min
-        self.max_value = max
+    def set_range(self, min_value, max_value, out_of_range=None):
+        self.min_value = min_value
+        self.max_value = max_value
         if out_of_range is not None:
             self.out_of_range_value = out_of_range
 
@@ -33,28 +35,34 @@ class VamValue:
             return int(self.unavailable_value)
 
 
+# ETSI ITS lat/lon are encoded in 0.1-microdegree units (scale 1e7).
 class VamLatitudeValue(VamValue):
     def __init__(self, value):
         super().__init__(value, 1e7, vam_msg.Latitude.UNAVAILABLE)
-        self.range(vam_msg.Latitude.MIN, vam_msg.Latitude.MAX)
+        self.set_range(vam_msg.Latitude.MIN, vam_msg.Latitude.MAX)
 
 
 class VamLongitudeValue(VamValue):
     def __init__(self, value):
         super().__init__(value, 1e7, vam_msg.Longitude.UNAVAILABLE)
-        self.range(vam_msg.Longitude.MIN, vam_msg.Longitude.MAX)
+        self.set_range(vam_msg.Longitude.MIN, vam_msg.Longitude.MAX)
 
 
+# Altitude and semi-axis lengths are encoded in centimetres (scale 1e2).
 class VamSemiAxisLengthValue(VamValue):
     def __init__(self, value):
         super().__init__(value, 1e2, vam_msg.SemiAxisLength.UNAVAILABLE)
-        self.range(vam_msg.SemiAxisLength.MIN, vam_msg.SemiAxisLength.MAX, vam_msg.SemiAxisLength.OUT_OF_RANGE)
+        self.set_range(
+            vam_msg.SemiAxisLength.MIN,
+            vam_msg.SemiAxisLength.MAX,
+            vam_msg.SemiAxisLength.OUT_OF_RANGE,
+        )
 
 
 class VamAltitudeValue(VamValue):
     def __init__(self, value):
         super().__init__(value, 1e2, vam_msg.AltitudeValue.UNAVAILABLE)
-        self.range(vam_msg.AltitudeValue.MIN, vam_msg.AltitudeValue.MAX)
+        self.set_range(vam_msg.AltitudeValue.MIN, vam_msg.AltitudeValue.MAX)
 
 
 class VamProvider(Node):
@@ -74,20 +82,24 @@ class VamProvider(Node):
         self.create_timer(timer_period_sec=1.0, callback=self.publish)
 
     def position_update(self, msg: PositionVector) -> None:
-        """Remember last position vector"""
+        """Remember last position vector."""
         self.position_vector = msg
 
     def get_reference_position(self) -> vam_msg.ReferencePositionWithConfidence:
-        """Reference position is at our own position for this example."""
+        """Return our own position as reference position for this example."""
         if self.position_vector is None:
             raise RuntimeError('No position vector available')
-        # Reference position
+
+        pv = self.position_vector
         pos = vam_msg.ReferencePositionWithConfidence()
-        pos.latitude.value = VamLatitudeValue(self.position_vector.latitude).get()
-        pos.longitude.value = VamLongitudeValue(self.position_vector.longitude).get()
-        pos.position_confidence_ellipse.semi_major_axis_length.value = VamSemiAxisLengthValue(self.position_vector.semi_major_confidence).get()
-        pos.position_confidence_ellipse.semi_minor_axis_length.value = VamSemiAxisLengthValue(self.position_vector.semi_minor_confidence).get()
-        pos.altitude.altitude_value.value = VamAltitudeValue(self.position_vector.altitude).get()
+        pos.latitude.value = VamLatitudeValue(pv.latitude).get()
+        pos.longitude.value = VamLongitudeValue(pv.longitude).get()
+        ellipse = pos.position_confidence_ellipse
+        ellipse.semi_major_axis_length.value = (
+            VamSemiAxisLengthValue(pv.semi_major_confidence).get())
+        ellipse.semi_minor_axis_length.value = (
+            VamSemiAxisLengthValue(pv.semi_minor_confidence).get())
+        pos.altitude.altitude_value.value = VamAltitudeValue(pv.altitude).get()
         pos.altitude.altitude_confidence.value = vam_msg.AltitudeConfidence.UNAVAILABLE
         return pos
 
@@ -96,24 +108,28 @@ class VamProvider(Node):
         msg = vam_msg.VAM()
         # Message header will be assigned by the VA service.
         # VRU is a standstill pedestrian
-        msg.vam.vam_parameters.basic_container.station_type.value = vam_msg.TrafficParticipantType.PEDESTRIAN
-        msg.vam.vam_parameters.basic_container.reference_position = self.get_reference_position()
-        
+        basic = msg.vam.vam_parameters.basic_container
+        basic.station_type.value = vam_msg.TrafficParticipantType.PEDESTRIAN
+        basic.reference_position = self.get_reference_position()
+
         # Assign some values at the mandatory VruHighFrequencyContainer
-        vru_high_frequency_container = vam_msg.VruHighFrequencyContainer()
-        vru_high_frequency_container.speed.speed_value.value = vam_msg.SpeedValue.STANDSTILL
-        vru_high_frequency_container.speed.speed_confidence.value = vam_msg.SpeedConfidence.UNAVAILABLE
-        vru_high_frequency_container.heading.value.value = vam_msg.Wgs84AngleValue.WGS84_NORTH
-        vru_high_frequency_container.heading.confidence.value = vam_msg.Wgs84AngleConfidence.UNAVAILABLE
-        vru_high_frequency_container.longitudinal_acceleration.longitudinal_acceleration_value.value = vam_msg.LongitudinalAccelerationValue.UNAVAILABLE
-        vru_high_frequency_container.longitudinal_acceleration.longitudinal_acceleration_confidence.value = vam_msg.AccelerationConfidence.UNAVAILABLE
-        vru_high_frequency_container.device_usage_is_present = True
-        vru_high_frequency_container.device_usage.value = vam_msg.VruDeviceUsage.LISTENING_TO_AUDIO
-        msg.vam.vam_parameters.vru_high_frequency_container = vru_high_frequency_container
+        vru_hf = vam_msg.VruHighFrequencyContainer()
+        vru_hf.speed.speed_value.value = vam_msg.SpeedValue.STANDSTILL
+        vru_hf.speed.speed_confidence.value = vam_msg.SpeedConfidence.UNAVAILABLE
+        vru_hf.heading.value.value = vam_msg.Wgs84AngleValue.WGS84_NORTH
+        vru_hf.heading.confidence.value = vam_msg.Wgs84AngleConfidence.UNAVAILABLE
+        accel = vru_hf.longitudinal_acceleration
+        accel.longitudinal_acceleration_value.value = (
+            vam_msg.LongitudinalAccelerationValue.UNAVAILABLE)
+        accel.longitudinal_acceleration_confidence.value = (
+            vam_msg.AccelerationConfidence.UNAVAILABLE)
+        vru_hf.device_usage_is_present = True
+        vru_hf.device_usage.value = vam_msg.VruDeviceUsage.LISTENING_TO_AUDIO
+        msg.vam.vam_parameters.vru_high_frequency_container = vru_hf
         return msg
 
     def publish(self) -> None:
-        """Publish on topic"""
+        """Publish on topic."""
         if self.position_vector:
             vam = self.generate_vam()
             self.vam_publisher.publish(vam)

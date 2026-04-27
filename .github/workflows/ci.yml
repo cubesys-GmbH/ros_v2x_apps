@@ -2,11 +2,25 @@ name: ci
 on:
   push:
     branches: [master]
+  pull_request:
 permissions:
   contents: read
   packages: write
 jobs:
-  ci:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        workspace:
+        - humble-develop
+        - jazzy-develop
+    uses: ./.github/workflows/test.yml
+    secrets: inherit
+    with:
+      workspace: ${{ matrix.workspace }}
+  build:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false
       matrix:
