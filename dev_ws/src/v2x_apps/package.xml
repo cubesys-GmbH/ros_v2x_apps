@@ -5,9 +5,22 @@
   <version>1.0.0</version>
   <description>Collection of V2X applications utilizing cube devices</description>
   <author email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</author>
-  <maintainer  email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</maintainer>
+  <maintainer email="apostolos.georgiadis@nfiniity.com">Apostolos Georgiadis</maintainer>
   <license>MIT</license>
+
   <depend>rclpy</depend>
+  <depend>vanetza_msgs</depend>
+  <depend>etsi_its_cam_msgs</depend>
+  <depend>etsi_its_denm_msgs</depend>
+  <depend>etsi_its_cpm_ts_msgs</depend>
+  <depend>etsi_its_vam_ts_msgs</depend>
+  <depend>cube_den_msgs</depend>
+  <depend>cube_facility_msgs</depend>
+
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
   <export>
     <build_type>ament_python</build_type>
   </export>
