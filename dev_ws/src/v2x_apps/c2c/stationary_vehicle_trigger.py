@@ -62,8 +62,7 @@ class StationaryVehicleTrigger(Node):
 
         while not self.client.wait_for_service(timeout_sec=1.0):
             self.get_logger().warn(
-                f'Service {
-                    self.client.service_name} not available, waiting again...')
+                f'Service {self.client.service_name} not available, waiting again...')
         self.get_logger().info(f'Service {self.client.service_name} available')
 
     def generate_request(self):
