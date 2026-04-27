@@ -29,11 +29,12 @@ class DenmNode(Node):
         self.client = self.create_client(Transmission, '/its/den_request')
 
         # A more sophisticated DEN service will use more appropriate trigger criteria matching
-        # the DEN use cases of your application. Here we just send a DENM every 10 seconds.
+        # the DEN use cases of your application. Here we just send a DENM every second.
         self.create_timer(1.0, self.transmit)
 
     def receive_callback(self, msg: denm_msg.DENM) -> None:
-        """Received DENMs are just logged in this example.
+        """Log received DENMs.
+
         You can implement your own DENM processing here and access any DENM field.
         """
         self.get_logger().info(
@@ -47,13 +48,15 @@ class DenmNode(Node):
             self.get_logger().info('  No termination present')
 
     def position_update(self, msg: PositionVector) -> None:
-        """Remember last position vector"""
+        """Remember last position vector."""
         self.position_vector = msg
 
     def request_completed(self, future: rclpy.task.Future) -> None:
         result = future.result()
         if result.confirm == Transmission.Response.CONFIRM_ACCEPTED:
-            action_id = f'{result.action_id.originating_station_id.value}#{result.action_id.sequence_number.value}'
+            origin = result.action_id.originating_station_id.value
+            seq = result.action_id.sequence_number.value
+            action_id = f'{origin}#{seq}'
             self.get_logger().info(f'DEN request fulfilled with ActionId[{action_id}]')
         else:
             reasons = {
@@ -91,7 +94,7 @@ class DenmNode(Node):
         return msg
 
     def get_reference_position(self) -> denm_msg.ReferencePosition:
-        """Reference position is at our own position for this example."""
+        """Return our own position as reference position for this example."""
         pos = denm_msg.ReferencePosition()
         if self.position_vector is None:
             raise RuntimeError('No position vector available')

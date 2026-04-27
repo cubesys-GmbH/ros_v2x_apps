@@ -5,9 +5,7 @@ from vanetza_msgs.msg import BtpDataIndication
 
 
 class BtpListener(Node):
-    """
-    BtpListener prints the BTP port number of any received BTP packet
-    """
+    """Print the BTP port number of any received BTP packet."""
 
     def __init__(self):
         super().__init__("btp_listener")

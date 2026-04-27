@@ -12,7 +12,7 @@
 #
 # The above copyright notice and this permission notice shall be included in all
 # copies or substantial portions of the Software.
-# 
+#
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 # FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -35,7 +35,8 @@ class StationaryVehicleTrigger(Node):
 
         # Information quality
         self.information_quality = facility_msg.InformationQuality()
-        self.information_quality.value = facility_msg.InformationQuality.INFORMATION_QUALITY_LEVEL_ONE
+        self.information_quality.value = (
+            facility_msg.InformationQuality.INFORMATION_QUALITY_LEVEL_ONE)
 
         # Road type
         self.road_type = facility_msg.RoadType()
@@ -47,10 +48,11 @@ class StationaryVehicleTrigger(Node):
 
         # Stationary Vehicle type
         self.stationary_vehicle_type = facility_msg.StationaryVehicleWarningType()
-        self.stationary_vehicle_type.value = facility_msg.StationaryVehicleWarningType.STOPPED_VEHICLE
+        self.stationary_vehicle_type.value = (
+            facility_msg.StationaryVehicleWarningType.STOPPED_VEHICLE)
 
         # Ignition
-        self.ignition = False 
+        self.ignition = False
 
         # Termination
         self.termination = False
@@ -91,7 +93,7 @@ def main(args=None):
             try:
                 response = node.future.result()
                 if response.success:
-                    node.get_logger().info(f'Request completed successful')
+                    node.get_logger().info('Request completed successfully')
                 else:
                     node.get_logger().info(
                         f'Request could not be sent: {response.message}')

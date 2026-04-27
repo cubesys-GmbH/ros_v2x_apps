@@ -6,9 +6,7 @@ from vanetza_msgs.srv import BtpData
 
 
 class BtpSender(Node):
-    """
-    BtpSender transmits a packet every second using Vanetza's BTP service
-    """
+    """Transmit a packet every second using Vanetza's BTP service."""
 
     def __init__(self):
         super().__init__("btp_sender")
@@ -25,6 +23,7 @@ class BtpSender(Node):
 
     def request_transmission(self):
         request = BtpData.Request()
+        # BTP-B (non-interactive) over GeoNetworking Single-Hop Broadcast.
         request.btp_type = BtpData.Request.BTP_TYPE_NON_INTERACTIVE
         request.transport_type = BtpData.Request.TRANSPORT_TYPE_SHB
         request.destination_port = 42  # choose a unique free port number
@@ -33,8 +32,7 @@ class BtpSender(Node):
         return self.client.call_async(request)
 
     def request_completed(self, future):
-        """
-        Check BTP service response
+        """Check BTP service response.
 
         If our request contains invalid data, then the remote service will
         refuse to transmit our BTP packet.

@@ -8,7 +8,8 @@ from vanetza_msgs.msg import PositionVector
 
 
 class CpmValue:
-    """ Represents a CPM value with scaling and range checking. """
+    """Represent a CPM value with scaling and range checking."""
+
     def __init__(self, value, scale=1.0, unavailable=math.nan):
         self.value = value
         self.scaling_factor = scale
@@ -34,6 +35,7 @@ class CpmValue:
             return int(self.unavailable_value)
 
 
+# ETSI ITS lat/lon are encoded in 0.1-microdegree units (scale 1e7).
 class CpmLatitudeValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e7, cpm_msg.Latitude.UNAVAILABLE)
@@ -46,10 +48,15 @@ class CpmLongitudeValue(CpmValue):
         self.range(cpm_msg.Longitude.MIN, cpm_msg.Longitude.MAX)
 
 
+# Altitude and semi-axis lengths are encoded in centimetres (scale 1e2).
 class CpmSemiAxisLengthValue(CpmValue):
     def __init__(self, value):
         super().__init__(value, 1e2, cpm_msg.SemiAxisLength.UNAVAILABLE)
-        self.range(cpm_msg.SemiAxisLength.MIN, cpm_msg.SemiAxisLength.MAX, cpm_msg.SemiAxisLength.OUT_OF_RANGE)
+        self.range(
+            cpm_msg.SemiAxisLength.MIN,
+            cpm_msg.SemiAxisLength.MAX,
+            cpm_msg.SemiAxisLength.OUT_OF_RANGE,
+        )
 
 
 class CpmAltitudeValue(CpmValue):
@@ -76,27 +83,29 @@ class CpmProvider(Node):
         self.create_timer(timer_period_sec=1.0, callback=self.publish)
 
     def position_update(self, msg: PositionVector) -> None:
-        """Remember last position vector"""
+        """Remember last position vector."""
         self.position_vector = msg
 
     def get_reference_position(self) -> cpm_msg.ReferencePosition:
-        """Reference position is at our own position for this example."""
+        """Return our own position as reference position for this example."""
         if self.position_vector is None:
             raise RuntimeError('No position vector available')
 
-        # Reference position
+        pv = self.position_vector
         pos = cpm_msg.ReferencePosition()
-        pos.latitude.value = CpmLatitudeValue(self.position_vector.latitude).get()
-        pos.longitude.value = CpmLongitudeValue(self.position_vector.longitude).get()
-        pos.position_confidence_ellipse.semi_major_confidence.value = CpmSemiAxisLengthValue(self.position_vector.semi_major_confidence).get()
-        pos.position_confidence_ellipse.semi_minor_confidence.value = CpmSemiAxisLengthValue(self.position_vector.semi_minor_confidence).get()
-        pos.altitude.altitude_value.value = CpmAltitudeValue(self.position_vector.altitude).get()
+        pos.latitude.value = CpmLatitudeValue(pv.latitude).get()
+        pos.longitude.value = CpmLongitudeValue(pv.longitude).get()
+        ellipse = pos.position_confidence_ellipse
+        ellipse.semi_major_confidence.value = (
+            CpmSemiAxisLengthValue(pv.semi_major_confidence).get())
+        ellipse.semi_minor_confidence.value = (
+            CpmSemiAxisLengthValue(pv.semi_minor_confidence).get())
+        pos.altitude.altitude_value.value = CpmAltitudeValue(pv.altitude).get()
         pos.altitude.altitude_confidence.value = cpm_msg.AltitudeConfidence.UNAVAILABLE
         return pos
 
     def generate_perceived_object_cpm(self) -> cpm_msg.CollectivePerceptionMessage:
         """Generate a CPM with use-case specific data."""
-        
         # Perceived object
         perceived_object = cpm_msg.PerceivedObject()
         perceived_object.measurement_delta_time.value = 1
@@ -116,13 +125,16 @@ class CpmProvider(Node):
         perceived_object.object_dimension_x.value.value = 30
         perceived_object.object_dimension_x.confidence.value = 1
 
-        # Container
+        # WrappedCpmContainer is an ASN.1 CHOICE: container_id selects which
+        # field below is the active branch.
         container = cpm_msg.WrappedCpmContainer()
-        container.container_id.value = cpm_msg.WrappedCpmContainer.CHOICE_CONTAINER_DATA_PERCEIVED_OBJECT_CONTAINER
-        container.container_data_perceived_object_container = cpm_msg.PerceivedObjectContainer()
-        container.container_data_perceived_object_container.number_of_perceived_objects.value = 1
-        container.container_data_perceived_object_container.perceived_objects.array = [
-            perceived_object]
+        container.container_id.value = \
+            cpm_msg.WrappedCpmContainer.CHOICE_CONTAINER_DATA_PERCEIVED_OBJECT_CONTAINER
+        objects = [perceived_object]
+        po_container = cpm_msg.PerceivedObjectContainer()
+        po_container.number_of_perceived_objects.value = len(objects)
+        po_container.perceived_objects.array = objects
+        container.container_data_perceived_object_container = po_container
 
         cpm = cpm_msg.CollectivePerceptionMessage()
         cpm.payload.management_container.reference_position = self.get_reference_position()
@@ -130,7 +142,7 @@ class CpmProvider(Node):
         return cpm
 
     def publish(self) -> None:
-        """Publish on topic"""
+        """Publish on topic."""
         if self.position_vector:
             cpm = self.generate_perceived_object_cpm()
             self.cpm_publisher.publish(cpm)

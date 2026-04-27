@@ -1,0 +1,46 @@
+name: test
+on:
+  workflow_call:
+    inputs:
+      workspace:
+        type: string
+        required: true
+  workflow_dispatch:
+    inputs:
+      workspace:
+        type: string
+        default: jazzy-develop
+permissions:
+  contents: read
+  packages: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: colcon test (${{ inputs.workspace }})
+    steps:
+    - name: check out repo
+      uses: actions/checkout@v4
+
+    - name: log on to container registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: build workspace image
+      run: |
+        docker build \
+          --build-arg WORKSPACE_VERSION=${{ inputs.workspace }} \
+          --tag v2x_apps_test:${{ inputs.workspace }} \
+          .
+
+    - name: run colcon test
+      run: |
+        docker run --rm --entrypoint bash \
+          v2x_apps_test:${{ inputs.workspace }} -c '
+            set -o pipefail
+            source /opt/cube/*/setup.bash
+            colcon test --packages-select v2x_apps --event-handlers console_direct+ || true
+            colcon test-result --all --verbose
+          '
