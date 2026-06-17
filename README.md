@@ -126,9 +126,20 @@ colcon test-result --all --verbose
 
 The cube:evk and the cube:its stack are used in V2X research and product projects across academia and industry. A few examples:
 
-- [Bike safety in mountain environments](https://www.nfiniity.com/blog/UniTrento-Bike-Safety.html) (University of Trento) brings V2X safety to mountain cyclists.
-- [Enhancing urban mobility](https://www.nfiniity.com/blog/TUM-Enhancing-Urban-Mobility.html) (TU München) applies collective perception to automated public transport.
-- [Group riding enhanced by C-ITS](https://www.nfiniity.com/blog/THI-Group-Riding-Enhanced-By-C-ITS.html) (THI) improves motorcycle group safety.
-- [V2X for urban e-bikes](https://www.nfiniity.com/news/Canyon-V2X-Bike-Integration-Cube-Nano.html) with Canyon Bicycles, using the cube:nano.
+**Bike safety in mountain environments** (University of Trento)
+
+[![Bike safety in mountain environments](images/articles/mtb.jpg)](https://www.nfiniity.com/blog/UniTrento-Bike-Safety.html)
+
+**Enhancing urban mobility** (TU München)
+
+[![Enhancing urban mobility](images/articles/mobile-rsu.jpg)](https://www.nfiniity.com/blog/TUM-Enhancing-Urban-Mobility.html)
+
+**Group riding enhanced by C-ITS** (THI)
+
+[![Group riding enhanced by C-ITS](images/articles/thi-group-riding-1.jpg)](https://www.nfiniity.com/blog/THI-Group-Riding-Enhanced-By-C-ITS.html)
+
+**V2X for urban e-bikes** (Canyon Bicycles)
+
+[![V2X for urban e-bikes](images/articles/canyon-bicycle-v2x.jpg)](https://www.nfiniity.com/news/Canyon-V2X-Bike-Integration-Cube-Nano.html)
 
 More case studies and demos at [nfiniity insights](https://www.nfiniity.com/insights.html).
