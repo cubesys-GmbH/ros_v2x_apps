@@ -16,7 +16,7 @@ flowchart LR
             cits["ITS facilities + Vanetza V2X stack"]
         end
     end
-    apps <-->|"ROS 2 topics & services (/its/*)<br/>same network, shared ROS_DOMAIN_ID"| cits
+    apps <-->|"ROS 2 topics & services<br/>same network, shared ROS_DOMAIN_ID"| cits
     cits <-->|"ETSI ITS-G5 or C-V2X"| ext(("other ITS stations"))
 ```
 
