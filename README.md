@@ -20,6 +20,8 @@ flowchart LR
     cits <-->|"ETSI ITS-G5 or C-V2X"| ext(("other ITS stations"))
 ```
 
+A rough architecture of *cube-its* itself is shown in the [cube-its overview](docs/cube-its.md).
+
 ---
 
 ## Getting started
@@ -38,7 +40,7 @@ These steps assume a running [cube-its](docs/cube-its.md) instance on a [cube:ev
 
    ```bash
    cd dev_ws
-   source /opt/cube/*/setup.bash   # ROS 2 + cube-its environment (skip if your shell already sources it)
+   source /opt/cube/*/setup.bash   # ROS 2 + cube-its environment
    colcon build --packages-select v2x_apps
    ```
 
