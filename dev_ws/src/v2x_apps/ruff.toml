@@ -1,0 +1,21 @@
+# Lint config for the v2x_apps package. Enforced in CI (.github/workflows/ci.yml)
+# and runnable locally with `ruff check` from this directory.
+# Carries over the rule set previously used by ament_flake8 / ament_pep257.
+line-length = 99
+extend-exclude = ["test"]
+
+[lint]
+select = ["A", "C4", "D", "E", "F", "I", "N", "Q", "W"]
+ignore = [
+    "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107",
+    "D203", "D212", "D213",
+]
+
+[lint.flake8-quotes]
+inline-quotes = "single"
+
+[lint.isort]
+known-first-party = ["c2c", "v2x_apps"]
+# match ament_flake8's import-order-style = google (interleave import / from by module)
+force-sort-within-sections = true
+order-by-type = false
