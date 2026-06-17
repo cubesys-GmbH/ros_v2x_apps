@@ -1,6 +1,6 @@
 # V2X application examples for cube-its
 
-This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the [*cube-its*](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/) within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
+This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the [*cube-its*](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/) within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment. V2X lets vehicles, roadside infrastructure, and vulnerable road users exchange standardized ETSI ITS messages in real time. Each example here shows how to send or receive one such message type through cube-its.
 
 *cube-its* runs on the [cube:evk](https://www.nfiniity.com/#hardware-section) host. Your `v2x_apps` examples run in their own Docker container, on the cube:evk itself or on any other host. As long as both are on the same network and share the same DDS domain (`ROS_DOMAIN_ID`, with `ROS_LOCALHOST_ONLY=0`), their nodes discover each other and exchange ITS messages over ROS 2 topics and services. *cube-its* runs the ITS facilities and the Vanetza V2X stack, so it handles the actual ETSI ITS-G5 or C-V2X transmission to and from other stations, while your nodes only produce and consume the ROS messages.
 
@@ -21,29 +21,6 @@ flowchart LR
 ```
 
 ---
-
-## Repository structure
-
-The package lives under `dev_ws/src/v2x_apps`. Each node is a self-contained example of one ETSI ITS message type:
-
-```bash
-dev_ws
-└── src/v2x_apps
-    ├── package.xml
-    ├── setup.cfg
-    ├── setup.py
-    ├── v2x_apps                            # ROS 2 example nodes
-    │   ├── btp_listener.py                 # receive raw BTP messages
-    │   ├── btp_sender.py                   # send raw BTP messages
-    │   ├── cam_listener.py                 # receive CAMs
-    │   ├── cpm_provider.py                 # provide CPMs
-    │   ├── denm_node.py                    # send & receive DENMs
-    │   └── vam_provider.py                 # provide VAMs
-    ├── c2c
-    │   └── stationary_vehicle_trigger.py   # Stationary Vehicle Warning trigger
-    └── test
-        └── test_value_scaling.py
-```
 
 ## Getting started
 
@@ -102,6 +79,31 @@ It then waits for CAMs from *cube-its*. Once they arrive:
 ```
 
 For more examples, with a diagram and topic/service breakdown per node, see [Code examples](docs/code_examples.md).
+
+---
+
+## Repository structure
+
+The package lives under `dev_ws/src/v2x_apps`. Each node is a self-contained example of one ETSI ITS message type:
+
+```bash
+dev_ws
+└── src/v2x_apps
+    ├── package.xml
+    ├── setup.cfg
+    ├── setup.py
+    ├── v2x_apps                            # ROS 2 example nodes
+    │   ├── btp_listener.py                 # receive raw BTP messages
+    │   ├── btp_sender.py                   # send raw BTP messages
+    │   ├── cam_listener.py                 # receive CAMs
+    │   ├── cpm_provider.py                 # provide CPMs
+    │   ├── denm_node.py                    # send & receive DENMs
+    │   └── vam_provider.py                 # provide VAMs
+    ├── c2c
+    │   └── stationary_vehicle_trigger.py   # Stationary Vehicle Warning trigger
+    └── test
+        └── test_value_scaling.py
+```
 
 ---
 
