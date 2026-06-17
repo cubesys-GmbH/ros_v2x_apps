@@ -126,20 +126,27 @@ colcon test-result --all --verbose
 
 The cube:evk and the cube:its stack are used in V2X research and product projects across academia and industry. A few examples:
 
-**Bike safety in mountain environments** (University of Trento)
-
-[![Bike safety in mountain environments](images/articles/mtb.jpg)](https://www.nfiniity.com/blog/UniTrento-Bike-Safety.html)
-
-**Enhancing urban mobility** (TU München)
-
-[![Enhancing urban mobility](images/articles/mobile-rsu.jpg)](https://www.nfiniity.com/blog/TUM-Enhancing-Urban-Mobility.html)
-
-**Group riding enhanced by C-ITS** (THI)
-
-[![Group riding enhanced by C-ITS](images/articles/thi-group-riding-1.jpg)](https://www.nfiniity.com/blog/THI-Group-Riding-Enhanced-By-C-ITS.html)
-
-**V2X for urban e-bikes** (Canyon Bicycles)
-
-[![V2X for urban e-bikes](images/articles/canyon-bicycle-v2x.jpg)](https://www.nfiniity.com/news/Canyon-V2X-Bike-Integration-Cube-Nano.html)
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://www.nfiniity.com/blog/UniTrento-Bike-Safety.html"><img src="images/articles/mtb.jpg" width="100%" alt="Bike safety in mountain environments"/></a><br/>
+      <b>Bike safety in mountain environments</b><br/>University of Trento
+    </td>
+    <td width="50%" align="center">
+      <a href="https://www.nfiniity.com/blog/TUM-Enhancing-Urban-Mobility.html"><img src="images/articles/mobile-rsu.jpg" width="100%" alt="Enhancing urban mobility"/></a><br/>
+      <b>Enhancing urban mobility</b><br/>TU München
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <a href="https://www.nfiniity.com/blog/THI-Group-Riding-Enhanced-By-C-ITS.html"><img src="images/articles/thi-group-riding-1.jpg" width="100%" alt="Group riding enhanced by C-ITS"/></a><br/>
+      <b>Group riding enhanced by C-ITS</b><br/>THI
+    </td>
+    <td width="50%" align="center">
+      <a href="https://www.nfiniity.com/news/Canyon-V2X-Bike-Integration-Cube-Nano.html"><img src="images/articles/canyon-bicycle-v2x.jpg" width="100%" alt="V2X for urban e-bikes"/></a><br/>
+      <b>V2X for urban e-bikes</b><br/>Canyon Bicycles
+    </td>
+  </tr>
+</table>
 
 More case studies and demos at [nfiniity insights](https://www.nfiniity.com/insights.html).
