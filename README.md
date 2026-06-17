@@ -101,7 +101,7 @@ It then waits for CAMs from *cube-its*. Once they arrive:
 [INFO] [1706013097.345731609] [cam_listener]: Received CAM from Station Id: 84281098
 ```
 
-👉 For more examples, with a diagram and topic/service breakdown per node, see [Code examples](docs/code_examples.md).
+For more examples, with a diagram and topic/service breakdown per node, see [Code examples](docs/code_examples.md).
 
 ---
 
@@ -119,6 +119,11 @@ colcon test-result --all --verbose
 
 ## Real-world deployments
 
-Explore real-world scenarios that show how end users apply our technology in practical conditions.
+The cube:evk and the cube:its stack are used in V2X research and product projects across academia and industry. A few examples:
 
-👉 [Check out related use cases and demos](https://www.nfiniity.com/knowledge.html) 
+- [Bike safety in mountain environments](https://www.nfiniity.com/blog/UniTrento-Bike-Safety.html) (University of Trento) brings V2X safety to mountain cyclists.
+- [Enhancing urban mobility](https://www.nfiniity.com/blog/TUM-Enhancing-Urban-Mobility.html) (TU München) applies collective perception to automated public transport.
+- [Group riding enhanced by C-ITS](https://www.nfiniity.com/blog/THI-Group-Riding-Enhanced-By-C-ITS.html) (THI) improves motorcycle group safety.
+- [V2X for urban e-bikes](https://www.nfiniity.com/news/Canyon-V2X-Bike-Integration-Cube-Nano.html) with Canyon Bicycles, using the cube:nano.
+
+More case studies and demos at [nfiniity insights](https://www.nfiniity.com/insights.html).
