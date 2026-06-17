@@ -7,6 +7,25 @@ permissions:
   contents: read
   packages: write
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: lint
+    defaults:
+      run:
+        working-directory: dev_ws/src/v2x_apps
+    steps:
+    - name: check out repo
+      uses: actions/checkout@v4
+    - name: set up python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+    - name: install linters
+      run: pip install ruff==0.15.17 mypy==2.1.0
+    - name: run ruff
+      run: ruff check .
+    - name: run mypy
+      run: mypy .
   test:
     strategy:
       fail-fast: false
@@ -19,7 +38,7 @@ jobs:
     with:
       workspace: ${{ matrix.workspace }}
   build:
-    needs: test
+    needs: [lint, test]
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     strategy:
       fail-fast: false

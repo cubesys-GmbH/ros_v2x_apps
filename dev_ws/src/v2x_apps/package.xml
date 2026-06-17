@@ -17,8 +17,6 @@
   <depend>cube_den_msgs</depend>
   <depend>cube_facility_msgs</depend>
 
-  <test_depend>ament_flake8</test_depend>
-  <test_depend>ament_pep257</test_depend>
   <test_depend>python3-pytest</test_depend>
 
   <export>
