@@ -8,7 +8,7 @@ Furthermore, *cube-its* serves as a comprehensive platform for the development, 
 
 ![Figure 1 - Schematic representation of cube-its](../images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
 
-Official resources: [cube-its documentation](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/) · [nfiniity homepage](https://www.nfiniity.com/)
+Official resources: [cube-its documentation](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/)
 
 - [Component description](#component-description)
 - [Interfaces](#interfaces)
