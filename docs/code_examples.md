@@ -1,23 +1,10 @@
 # Code examples
 
-```bash
-dev_ws
-└── src/v2x_apps
-    ├── package.xml
-    ├── setup.cfg
-    ├── setup.py
-    ├── v2x_apps
-    │   ├── btp_listener.py
-    │   ├── btp_sender.py
-    │   ├── cam_listener.py
-    │   ├── cpm_provider.py
-    │   ├── denm_node.py
-    │   └── vam_provider.py
-    ├── c2c
-    │   └── stationary_vehicle_trigger.py
-    └── test
-        └── test_value_scaling.py
-```
+- [Cooperative Awareness Message (CAM)](#cooperative-awareness-message)
+- [Decentralized Environmental Notification Message (DENM)](#decentralized-environmental-notification-message)
+- [Collective Perception Message (CPM)](#collective-perception-message)
+- [Vulnerable Road User Awareness Message (VAM)](#vulnerable-road-user-awareness-message)
+- [Stationary Vehicle Warning (StVeWa)](#stationary-vehicle-warning-trigger)
 
 ## Cooperative Awareness Message
 

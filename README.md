@@ -3,20 +3,20 @@
 This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment. The content is structured as follows: 
 
 1. [cube-its](#cube-its)
-   - 1.1 [Component description](#component-description)
-   - 1.2 [Compatible ETSI ITS messages](#compatible-ETSI-ITS-messages)
-   - 1.3 [Conformance validation](#conformance-validation)
-   - 1.4 [Supported applications](#supported-applications)
+   - 1.1 [Component description](docs/cube-its.md#component-description)
+   - 1.2 [Compatible ETSI ITS messages](docs/cube-its.md#compatible-etsi-its-messages)
+   - 1.3 [Conformance validation](docs/cube-its.md#conformance-validation)
+   - 1.4 [Supported applications](docs/cube-its.md#supported-applications)
 2. [ROS 2](#ros-2)
    - 2.1 [Node visibility](#node-visibility)
 3. [Prerequisites](#prerequisites)
-4. [Code examples](docs/code_examples.md)
-   - 4.1 [Cooperative Awareness Message (CAM)](docs/code_examples.md#cooperative-awareness-message)
-   - 4.2 [Decentralized Environmental Notification Message (DENM)](docs/code_examples.md#decentralized-environmental-notification-message)
-   - 4.3 [Collective Perception Message (CPM)](docs/code_examples.md#collective-perception-message)
-   - 4.4 [Vulnerable Road User Awareness Message (VAM)](docs/code_examples.md#vulnerable-road-user-awareness-message)
-   - 4.5 [Stationary Vehicle Warning (StVeWa)](docs/code_examples.md#stationary-vehicle-warning-trigger)
-5. [Build and run nodes](#build-and-run-nodes)
+4. [Getting started](#getting-started)
+5. [Code examples](docs/code_examples.md)
+   - 5.1 [Cooperative Awareness Message (CAM)](docs/code_examples.md#cooperative-awareness-message)
+   - 5.2 [Decentralized Environmental Notification Message (DENM)](docs/code_examples.md#decentralized-environmental-notification-message)
+   - 5.3 [Collective Perception Message (CPM)](docs/code_examples.md#collective-perception-message)
+   - 5.4 [Vulnerable Road User Awareness Message (VAM)](docs/code_examples.md#vulnerable-road-user-awareness-message)
+   - 5.5 [Stationary Vehicle Warning (StVeWa)](docs/code_examples.md#stationary-vehicle-warning-trigger)
 6. [Run tests](#run-tests)
 7. [Real-world deployments](#real-world-deployments)
 
@@ -24,7 +24,7 @@ This repository provides examples demonstrating how to develop and run your own 
 
 ## cube-its <img src="https://img.shields.io/badge/latest-v1.4.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
 
-The **cube-its** framework is designed to seamlessly integrate Intelligent Transportation Systems (ITS) applications and Vehicle-to-Everything (V2X) communication capabilities within a ROS 2 environment. It facilitates data exchange and communication between vehicles and external entities such as other vehicles, infrastructure, pedestrians, and cloud systems, leveraging V2X communication technologies.
+The **[cube-its](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/)** framework is designed to seamlessly integrate Intelligent Transportation Systems (ITS) applications and Vehicle-to-Everything (V2X) communication capabilities within a ROS 2 environment. It facilitates data exchange and communication between vehicles and external entities such as other vehicles, infrastructure, pedestrians, and cloud systems, leveraging V2X communication technologies.
 
 The framework comprises multiple nodes and components that collaboratively handle GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication, utilizing the [Vanetza](https://www.vanetza.org/) library, as illustrated in Figure 1.
 
@@ -32,55 +32,9 @@ Furthermore, *cube-its* serves as a comprehensive platform for the development, 
 
 ![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
 
-### Component description
+For the framework details — components, interfaces, supported ETSI ITS messages, conformance and applications:
 
-| Component | Description |
-| --- | --- |
-| GNSS | Provides accurate global positioning data for the system. It reads data from GNSS receiver and provides the position, velocity, and time information. | 
-| Kinematics | Computes the kinematic state of the system based on GNSS data and other sensors. It calculates the system's pose, velocity, and acceleration. | 
-| I/O | Handles sensor inputs and actuator outputs. It processes data from various sensors or interfaces such as CAN (Controller Area Network). | 
-| ITS Facilities | Provides services and functionalities for intelligent transportation systems, including communication with traffic infrastructure and managing V2X communication. | 
-| Vanetza | Facilitates V2X communication by implementing the **[ETSI (European Telecommunications Standards Institute)](https://www.etsi.org) ITS-G5** protocol for vehicle and infrastructure communication. | 
-
-### Interfaces
-
-The [`ros_cube_msgs`](https://github.com/cubesys-GmbH/ros_cube_msgs) package provides a set of ROS message and service definitions for interacting with cube-its, forming part of the public API. The package includes the following:
- Name | Description |
-| --- | --- |
-| cube_ca_msgs | Interface for Cooperative Awareness (CA) | 
-| cube_den_msgs | Interface for Decentralized Environmental Notification (DEN) | 
-| cube_cp_msgs | Interface for Collective Perception (CP) | 
-| cube_va_msgs | Interface for Vulnerable Road Users Awareness (VA) |
-| cube_facility_msgs | Interface supporting ITS facilities|
-| cube_msgs | General interface for cube settings and parameters |
-
-### Compatible ETSI ITS messages
-
-The *cube-its* framework incorporates the [`etsi_its_messages`](https://github.com/ika-rwth-aachen/etsi_its_messages) package to facilitate the use of standardized ETSI ITS messages for V2X communication within ROS and ROS 2 environments. This integration enables developers to implement and manage V2X communication protocols, adhering to the ETSI specifications, within robotic and autonomous vehicle systems.
-
-| Status | Acronym | Name | EN Specification | TS Specification | Supported in cube-its |
-| --- | --- | --- | --- | --- | --- |
-| :white_check_mark: | CAM | Cooperative Awareness Message | [EN 302 637-2 V1.4.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263702/01.04.01_60/en_30263702v010401p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/cam_en302637_2)) | - | >=v1.0.0 |
-| :white_check_mark: | DENM | Decentralized Environmental Notification Message | [EN 302 637-3 V1.3.1](https://www.etsi.org/deliver/etsi_en/302600_302699/30263703/01.03.01_60/en_30263703v010301p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/denm_en302637_3)) | - | >=v1.0.0 |
-| :white_check_mark: | CPM | Collective Perception Message | - | [TS 103 324 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103324/02.01.01_60/ts_103324v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/cpm_ts103324)) | >=v1.2.0 |
-| :white_check_mark: | VAM | Vulnerable Road User Awareness Message | - | [TS 103 300-3 V2.2.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/10330003/02.02.01_60/ts_10330003v020201p.pdf) | >=v1.3.0 |
-| :soon: | MAPEM | Map Extended Message | - | [TS 103 301 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/02.01.01_60/ts_103301v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/is_ts103301/-/tree/v2.1.1?ref_type=tags)) | - |
-| :soon: | SPATEM | Signal Phase and Timing Extended Message | - | [TS 103 301 V2.1.1](https://www.etsi.org/deliver/etsi_ts/103300_103399/103301/02.01.01_60/ts_103301v020101p.pdf) ([ASN.1](https://forge.etsi.org/rep/ITS/asn1/is_ts103301/-/tree/v2.1.1?ref_type=tags)) | - |
-
-### Conformance validation
-
-The *cube-its* framework is validated using the ETSI conformance validation framework, as specified in [ETSI TR 103 099 V1.5.1](https://www.etsi.org/deliver/etsi_tr/103000_103099/103099/01.05.01_60/tr_103099v010501p.pdf).
-
-### Supported applications
-
-This section provides an overview of the supported applications profiled and specified by various C-ITS platforms and consortia, including [C-ROADS](https://www.c-roads.eu/platform.html), the [Car-2-Car Communication Consortium (C2C-CC)](https://www.car-2-car.org/), the [Connected Motorcycle Consortium (CMC)](https://www.cmc-info.net/), and others.
-For simplicity, the implementation of triggering conditions is omitted here due to the lack of in-vehicle information.
-
-Please note that application profiling can always be achieved by configuring the specified message values and applying the appropriate trigger conditions. Examples of how to configure the values for various messages, such as DENM, CPM, VAM etc. can be found in [code examples](#code-examples).
-
-| Status | Acronym | Name | Specification | Supported in cube-its |
-| --- | --- | --- | --- | --- |
-| :white_check_mark: | StVeWa | Triggering Conditions and Data Quality Stationary Vehicle Warning | [C2C-CC RS 2006 Stationary Vehicle R1.6.7](https://www.car-2-car.org/fileadmin/documents/Basic_System_Profile/Release_1.6.7/C2CCC_RS_2006_StationaryVehicle_R167.pdf) | >=v1.3.0 |
+👉 [cube-its reference](docs/cube-its.md) · [official cube-its documentation](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/)
 
 ## ROS 2
 
@@ -114,59 +68,86 @@ More information about domain ID can be found here: https://docs.ros.org/en/humb
 
 ---
 
-## Code examples
+## Getting started
 
-Each example node is documented separately, with a diagram and topic/service breakdown:
+These steps assume a running *cube-its* instance on a [cube:EVK or cube device](https://www.nfiniity.com/#hardware-section).
 
-👉 [Code examples](docs/code_examples.md) — CAM, DENM, CPM, VAM and Stationary Vehicle Warning
+1. **Clone the repository and open it in the devcontainer.**
 
----
+   ```bash
+   git clone https://github.com/cubesys-GmbH/ros_v2x_apps.git
+   ```
 
-## Build and run nodes
+   Open the folder in VSCode and reopen it in the container when prompted.
 
-Navigate to the root of the workspace, dev_ws:
+2. **Build the package** from the workspace root.
 
-```
-cd dev_ws
-```
+   ```bash
+   cd dev_ws
+   colcon build --packages-select v2x_apps
+   ```
 
-Build application by:
+3. **Source the overlay** so the executables are on your path.
 
-```
-colcon build --packages-select v2x_apps
-```
+   ```bash
+   source install/setup.bash
+   ```
 
-Still in the same terminal, source the setup files:
+4. **Enable discovery** so `v2x_apps` and *cube-its* see each other. They must share the same [`ROS_DOMAIN_ID`](#node-visibility) (default `42`).
 
-```
-source install/setup.bash
-```
+   ```bash
+   export ROS_LOCALHOST_ONLY=0
+   ```
 
-Now run the corresponding node. In this case `cam_listener`:
+5. **Run a node** — `cam_listener` here; see [Code examples](docs/code_examples.md) for what each one does.
 
-```
-ros2 run v2x_apps cam_listener
-```
+   ```bash
+   ros2 run v2x_apps cam_listener
+   ```
 
-The package exposes the following executables: `cam_listener`, `denm_node`, `cpm_provider`, `vam_provider`, `btp_listener`, `btp_sender`, `stationary_vehicle`.
+   Available nodes: `cam_listener`, `denm_node`, `cpm_provider`, `vam_provider`, `btp_listener`, `btp_sender`, `stationary_vehicle`.
 
-
-The node is running correctly when you see the following terminal output:
+The node started correctly when you see:
 
 ```
 [INFO] [1706013094.349399714] [cam_listener]: Node "cam_listener" started
 ```
 
-The *cam_listener* is now waiting for a received CAM message by *cube-its*. 
-When *cube-its* starts receiving CAMs, *cam_listener* will output on terminal:
+It then waits for CAMs from *cube-its*. Once they arrive:
 
 ```
 [INFO] [1706013095.341824275] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013096.345854233] [cam_listener]: Received CAM from Station Id: 84281098
 [INFO] [1706013097.345731609] [cam_listener]: Received CAM from Station Id: 84281098
-[INFO] [1706013098.345113236] [cam_listener]: Received CAM from Station Id: 84281098
-[INFO] [1706013099.344528362] [cam_listener]: Received CAM from Station Id: 84281098
 ```
+
+---
+
+## Code examples
+
+```bash
+dev_ws
+└── src/v2x_apps
+    ├── package.xml
+    ├── setup.cfg
+    ├── setup.py
+    ├── v2x_apps
+    │   ├── btp_listener.py
+    │   ├── btp_sender.py
+    │   ├── cam_listener.py
+    │   ├── cpm_provider.py
+    │   ├── denm_node.py
+    │   └── vam_provider.py
+    ├── c2c
+    │   └── stationary_vehicle_trigger.py
+    └── test
+        └── test_value_scaling.py
+```
+
+Each example node is documented separately, with a diagram and topic/service breakdown:
+
+👉 [Code examples](docs/code_examples.md) — CAM, DENM, CPM, VAM and Stationary Vehicle Warning
+
 ---
 
 ## Run tests
