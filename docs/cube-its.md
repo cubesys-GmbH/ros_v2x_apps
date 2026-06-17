@@ -1,5 +1,7 @@
 # cube-its
 
+Official resources: [cube-its documentation](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/) · [nfiniity homepage](https://www.nfiniity.com/)
+
 - [Component description](#component-description)
 - [Interfaces](#interfaces)
 - [Compatible ETSI ITS messages](#compatible-etsi-its-messages)
