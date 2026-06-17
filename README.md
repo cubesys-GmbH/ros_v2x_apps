@@ -38,6 +38,7 @@ These steps assume a running [cube-its](docs/cube-its.md) instance on a [cube:ev
 
    ```bash
    cd dev_ws
+   source /opt/cube/*/setup.bash   # ROS 2 + cube-its environment (skip if your shell already sources it)
    colcon build --packages-select v2x_apps
    ```
 
