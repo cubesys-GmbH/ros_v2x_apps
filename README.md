@@ -140,7 +140,7 @@ The cube:evk and the cube:its stack are used in V2X research and product project
   <tr>
     <td width="50%" align="center">
       <a href="https://www.nfiniity.com/blog/THI-Group-Riding-Enhanced-By-C-ITS.html"><img src="images/articles/thi-group-riding-1.jpg" width="100%" alt="Group riding enhanced by C-ITS"/></a><br/>
-      <b>Group riding enhanced by C-ITS</b><br/>THI
+      <b>Group riding enhanced by C-ITS</b><br/>Technische Hochschule Ingolstadt
     </td>
     <td width="50%" align="center">
       <a href="https://www.nfiniity.com/news/Canyon-V2X-Bike-Integration-Cube-Nano.html"><img src="images/articles/canyon-bicycle-v2x.jpg" width="100%" alt="V2X for urban e-bikes"/></a><br/>
