@@ -4,6 +4,26 @@ This repository provides examples demonstrating how to develop and run your own 
 
 ---
 
+## How it works
+
+*cube-its* and your `v2x_apps` examples each run in their own Docker container on the [cube:evk](https://www.nfiniity.com/#hardware-section), both inside a ROS 2 environment. Sharing the same DDS domain (`ROS_DOMAIN_ID`, with `ROS_LOCALHOST_ONLY=0`), their nodes discover each other and exchange ITS messages over ROS 2 topics and services. *cube-its* runs the ITS facilities and the Vanetza V2X stack, so it handles the actual ETSI ITS-G5 transmission to and from other stations, while your nodes only produce and consume the ROS messages.
+
+```mermaid
+flowchart LR
+    subgraph evk["cube:evk host"]
+        subgraph d2["Docker container: ros_v2x_apps"]
+            apps["v2x_apps example nodes"]
+        end
+        subgraph d1["Docker container: cube-its"]
+            cits["ITS facilities + Vanetza V2X stack"]
+        end
+        apps <-->|"ROS 2 topics & services (/its/*)<br/>shared ROS_DOMAIN_ID"| cits
+    end
+    cits <-->|"ETSI ITS-G5"| ext(("other ITS stations"))
+```
+
+---
+
 ## Repository structure
 
 The package lives under `dev_ws/src/v2x_apps`. Each node is a self-contained example of one ETSI ITS message type:
