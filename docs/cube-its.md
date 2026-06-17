@@ -1,20 +1,12 @@
 # cube-its <img src="https://img.shields.io/badge/latest-v1.4.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/>
 
-The **cube-its** framework is designed to seamlessly integrate Intelligent Transportation Systems (ITS) applications and Vehicle-to-Everything (V2X) communication capabilities within a ROS 2 environment. It facilitates data exchange and communication between vehicles and external entities such as other vehicles, infrastructure, pedestrians, and cloud systems, leveraging V2X communication technologies.
+The **cube-its** framework integrates Intelligent Transportation Systems (ITS) applications and Vehicle-to-Everything (V2X) communication within a ROS 2 environment. It handles data exchange between vehicles and external entities such as other vehicles, infrastructure, pedestrians, and cloud systems.
 
-The framework comprises multiple nodes and components that collaboratively handle GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication, utilizing the [Vanetza](https://www.vanetza.org/) library, as illustrated in Figure 1.
-
-Furthermore, *cube-its* serves as a comprehensive platform for the development, deployment, and operation of ITS applications and related innovations.
+Its nodes collaboratively handle GNSS data, vehicle kinematics, I/O, ITS facilities, and V2X communication via the [Vanetza](https://www.vanetza.org/) library, as illustrated in Figure 1.
 
 ![Figure 1 - Schematic representation of cube-its](../images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
 
 Official resources: [cube-its documentation](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/)
-
-- [Component description](#component-description)
-- [Interfaces](#interfaces)
-- [Compatible ETSI ITS messages](#compatible-etsi-its-messages)
-- [Conformance validation](#conformance-validation)
-- [Supported applications](#supported-applications)
 
 ## Component description
 
@@ -29,7 +21,8 @@ Official resources: [cube-its documentation](https://www.nfiniity.com/docs/dev/s
 ## Interfaces
 
 The [`ros_cube_msgs`](https://github.com/cubesys-GmbH/ros_cube_msgs) package provides a set of ROS message and service definitions for interacting with cube-its, forming part of the public API. The package includes the following:
- Name | Description |
+
+| Name | Description |
 | --- | --- |
 | cube_ca_msgs | Interface for Cooperative Awareness (CA) | 
 | cube_den_msgs | Interface for Decentralized Environmental Notification (DEN) | 
