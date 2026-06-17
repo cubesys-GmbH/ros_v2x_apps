@@ -56,7 +56,7 @@ These steps assume a running [cube-its](docs/cube-its.md) instance on a [cube:ev
 
    More on [domain IDs](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html).
 
-5. **Run a node** (`cam_listener` here); see [Code examples](docs/code_examples.md) for what each one does.
+5. **Run a node** (`cam_listener` here).
 
    ```bash
    ros2 run v2x_apps cam_listener

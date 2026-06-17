@@ -1,12 +1,10 @@
 # cube-its <img src="https://img.shields.io/badge/latest-v1.4.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/>
 
-The **cube-its** framework integrates Intelligent Transportation Systems (ITS) applications and Vehicle-to-Everything (V2X) communication within a ROS 2 environment. It handles data exchange between vehicles and external entities such as other vehicles, infrastructure, pedestrians, and cloud systems.
+The **[cube-its](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/)** framework integrates Intelligent Transportation Systems (ITS) applications and Vehicle-to-Everything (V2X) communication within a ROS 2 environment. It handles data exchange between vehicles and external entities such as other vehicles, infrastructure, pedestrians, and cloud systems.
 
 Its nodes collaboratively handle GNSS data, vehicle kinematics, I/O, ITS facilities, and V2X communication via the [Vanetza](https://www.vanetza.org/) library, as illustrated in Figure 1.
 
 ![Figure 1 - Schematic representation of cube-its](../images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
-
-Official resources: [cube-its documentation](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/)
 
 ## Component description
 
