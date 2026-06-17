@@ -1,6 +1,6 @@
 # V2X application examples for cube-its
 
-`v2x_apps` is a collection of ready-to-run examples for building your own V2X (Vehicle-to-Everything) application on [*cube-its*](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/), in a [ROS 2](https://www.ros.org/) environment. In V2X, vehicles, roadside infrastructure, and vulnerable road users exchange standardized ETSI ITS messages in real time; each example here sends or receives one such message type through cube-its.
+`v2x_apps` is a collection of ready-to-run examples for building your own V2X (Vehicle-to-Everything) application on [*cube-its*](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/), in a [ROS 2](https://www.ros.org/) environment. In V2X, vehicles, roadside infrastructure, and vulnerable road users exchange standardized ITS messages in real time. Each example here sends or receives one such message type through cube-its.
 
 *cube-its* runs on the [cube:evk](https://www.nfiniity.com/#hardware-section). Your `v2x_apps` examples run in their own Docker container, on the cube:evk itself or any other host on the same network. As long as both share the same DDS domain (`ROS_DOMAIN_ID`, with `ROS_LOCALHOST_ONLY=0`), their nodes discover each other and exchange ITS messages over ROS 2 topics and services. *cube-its* handles the actual ETSI ITS-G5 or C-V2X transmission via its ITS facilities and the Vanetza stack, while your nodes only produce and consume the ROS messages.
 
@@ -85,7 +85,7 @@ For more examples, with a diagram and topic/service breakdown per node, see [Cod
 
 ## Repository structure
 
-The package lives under `dev_ws/src/v2x_apps`. Each node is a self-contained example of one ETSI ITS message type:
+The package lives under `dev_ws/src/v2x_apps`. Each node is a self-contained example of one ITS message type:
 
 ```bash
 dev_ws
