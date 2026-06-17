@@ -3,17 +3,15 @@
 This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the *cube-its* within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment. The content is structured as follows: 
 
 1. [Repository structure](#repository-structure)
-2. [cube-its](#cube-its)
+2. [cube-its](docs/cube-its.md)
    - 2.1 [Component description](docs/cube-its.md#component-description)
    - 2.2 [Compatible ETSI ITS messages](docs/cube-its.md#compatible-etsi-its-messages)
    - 2.3 [Conformance validation](docs/cube-its.md#conformance-validation)
    - 2.4 [Supported applications](docs/cube-its.md#supported-applications)
-3. [ROS 2](#ros-2)
-4. [Prerequisites](#prerequisites)
-5. [Getting started](#getting-started)
-   - 5.1 [Code examples](docs/code_examples.md)
-6. [Run tests](#run-tests)
-7. [Real-world deployments](#real-world-deployments)
+3. [Getting started](#getting-started)
+   - 3.1 [Code examples](docs/code_examples.md)
+4. [Run tests](#run-tests)
+5. [Real-world deployments](#real-world-deployments)
 
 ---
 
@@ -40,37 +38,9 @@ dev_ws
         └── test_value_scaling.py
 ```
 
-## cube-its <img src="https://img.shields.io/badge/latest-v1.4.0-green"/> <img src="https://img.shields.io/badge/ROS 2-jazzy | humble-blue"/> 
-
-The **cube-its** framework is designed to seamlessly integrate Intelligent Transportation Systems (ITS) applications and Vehicle-to-Everything (V2X) communication capabilities within a ROS 2 environment. It facilitates data exchange and communication between vehicles and external entities such as other vehicles, infrastructure, pedestrians, and cloud systems, leveraging V2X communication technologies.
-
-The framework comprises multiple nodes and components that collaboratively handle GNSS data, vehicle kinematics, I/O operations, ITS facilities, and V2X communication, utilizing the [Vanetza](https://www.vanetza.org/) library, as illustrated in Figure 1.
-
-Furthermore, *cube-its* serves as a comprehensive platform for the development, deployment, and operation of ITS applications and related innovations.
-
-![Figure 1 - Schematic representation of cube-its](images/cube-its-schematic-architecture.png "Figure 1 - Schematic representation of cube-its")
-
-For the framework details — components, interfaces, supported ETSI ITS messages, conformance and applications:
-
-👉 [cube-its reference](docs/cube-its.md)
-
-## ROS 2
-
-ROS 2 is known as an advanced middleware for creating software for self-driving robots and even autonomous vehicles. It has a decentralized setup with nodes handling specific tasks, such as processing data from a single sensor etc. Since we will be working with ROS, it makes sense to get familiar with the environment and features of ROS.
-
-Node discovery between `v2x_apps` and *cube-its* is configured in [Getting started](#getting-started).
-
----
-
-## Prerequisites
-- A [cube:evk](https://www.nfiniity.com/#hardware-section) running the *cube-its* framework
-- You likely already have worked with devcontainer projects in VSCode (Visual Studio Code). If you are not familiar with developing inside a container, check the following link https://code.visualstudio.com/docs/devcontainers/containers before you start.
-
----
-
 ## Getting started
 
-These steps assume a running *cube-its* instance on a [cube:evk](https://www.nfiniity.com/#hardware-section).
+These steps assume a running [cube-its](docs/cube-its.md) instance on a [cube:evk](https://www.nfiniity.com/#hardware-section).
 
 1. **Clone the repository and open it in the devcontainer.**
 
@@ -93,7 +63,7 @@ These steps assume a running *cube-its* instance on a [cube:evk](https://www.nfi
    source install/setup.bash
    ```
 
-4. **Enable discovery** so `v2x_apps` and *cube-its* can see each other. By default `ROS_LOCALHOST_ONLY=1` hides nodes from other ROS 2 environments on the network — set it to `0`, and make sure both share the same `ROS_DOMAIN_ID` (default `42`).
+4. **Enable discovery** so `v2x_apps` and *cube-its* can see each other. By default `ROS_LOCALHOST_ONLY=1` hides nodes from other ROS 2 environments on the network. Set it to `0` and make sure both share the same `ROS_DOMAIN_ID` (default `42`).
 
    ```bash
    export ROS_LOCALHOST_ONLY=0
@@ -102,7 +72,7 @@ These steps assume a running *cube-its* instance on a [cube:evk](https://www.nfi
 
    More on [domain IDs](https://docs.ros.org/en/humble/Concepts/Intermediate/About-Domain-ID.html).
 
-5. **Run a node** — `cam_listener` here; see [Code examples](docs/code_examples.md) for what each one does.
+5. **Run a node** (`cam_listener` here); see [Code examples](docs/code_examples.md) for what each one does.
 
    ```bash
    ros2 run v2x_apps cam_listener
@@ -124,7 +94,7 @@ It then waits for CAMs from *cube-its*. Once they arrive:
 [INFO] [1706013097.345731609] [cam_listener]: Received CAM from Station Id: 84281098
 ```
 
-👉 For more examples — each node explained with a diagram and topic/service breakdown — see [Code examples](docs/code_examples.md).
+👉 For more examples, with a diagram and topic/service breakdown per node, see [Code examples](docs/code_examples.md).
 
 ---
 
