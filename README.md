@@ -2,19 +2,21 @@
 
 This repository provides examples demonstrating how to develop and run your own V2X (Vehicle-to-Everything) application on the [*cube-its*](https://www.nfiniity.com/docs/dev/stacks/cube-its/intro/) within a [ROS 2 (Robot Operating System)](https://www.ros.org/) environment.
 
-*cube-its* and your `v2x_apps` examples each run in their own Docker container on the [cube:evk](https://www.nfiniity.com/#hardware-section), both inside a ROS 2 environment. Sharing the same DDS domain (`ROS_DOMAIN_ID`, with `ROS_LOCALHOST_ONLY=0`), their nodes discover each other and exchange ITS messages over ROS 2 topics and services. *cube-its* runs the ITS facilities and the Vanetza V2X stack, so it handles the actual ETSI ITS-G5 or C-V2X transmission to and from other stations, while your nodes only produce and consume the ROS messages.
+*cube-its* runs on the [cube:evk](https://www.nfiniity.com/#hardware-section) host. Your `v2x_apps` examples run in their own Docker container, which can sit on a separate host such as a notebook or desktop. As long as both are on the same network and share the same DDS domain (`ROS_DOMAIN_ID`, with `ROS_LOCALHOST_ONLY=0`), their nodes discover each other and exchange ITS messages over ROS 2 topics and services. *cube-its* runs the ITS facilities and the Vanetza V2X stack, so it handles the actual ETSI ITS-G5 or C-V2X transmission to and from other stations, while your nodes only produce and consume the ROS messages.
 
 ```mermaid
 flowchart LR
-    subgraph evk["cube:evk host"]
+    subgraph dev["notebook / desktop host"]
         subgraph d2["Docker container: ros_v2x_apps"]
             apps["v2x_apps example nodes"]
         end
+    end
+    subgraph evk["cube:evk host"]
         subgraph d1["Docker container: cube-its"]
             cits["ITS facilities + Vanetza V2X stack"]
         end
-        apps <-->|"ROS 2 topics & services (/its/*)<br/>shared ROS_DOMAIN_ID"| cits
     end
+    apps <-->|"ROS 2 topics & services (/its/*)<br/>same network, shared ROS_DOMAIN_ID"| cits
     cits <-->|"ETSI ITS-G5 or C-V2X"| ext(("other ITS stations"))
 ```
 
