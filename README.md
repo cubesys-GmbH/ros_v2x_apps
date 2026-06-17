@@ -133,7 +133,7 @@ The cube:evk and the cube:its stack are used in V2X research and product project
       <b>Bike safety in mountain environments</b><br/>University of Trento
     </td>
     <td width="50%" align="center">
-      <a href="https://www.nfiniity.com/blog/TUM-Enhancing-Urban-Mobility.html"><img src="images/articles/mobile-rsu.jpg" width="100%" alt="Enhancing urban mobility"/></a><br/>
+      <a href="https://www.nfiniity.com/blog/TUM-Enhancing-Urban-Mobility.html"><img src="images/articles/rickshaw.jpg" width="100%" alt="Enhancing urban mobility"/></a><br/>
       <b>Enhancing urban mobility</b><br/>TU München
     </td>
   </tr>
@@ -143,8 +143,8 @@ The cube:evk and the cube:its stack are used in V2X research and product project
       <b>Group riding enhanced by C-ITS</b><br/>Technische Hochschule Ingolstadt
     </td>
     <td width="50%" align="center">
-      <a href="https://www.nfiniity.com/news/Canyon-V2X-Bike-Integration-Cube-Nano.html"><img src="images/articles/canyon-bicycle-v2x.jpg" width="100%" alt="V2X for urban e-bikes"/></a><br/>
-      <b>V2X for urban e-bikes</b><br/>Canyon Bicycles
+      <a href="https://www.nfiniity.com/insights.html"><img src="images/articles/Lamborghini-Ducati-nfiniity.jpg" width="100%" alt="V2X for cars and motorcycles"/></a><br/>
+      <b>V2X for cars and motorcycles</b><br/>Lamborghini and Ducati
     </td>
   </tr>
 </table>
