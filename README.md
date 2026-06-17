@@ -11,9 +11,9 @@ flowchart LR
             apps["v2x_apps example nodes"]
         end
     end
-    subgraph evk["cube:evk host"]
+    subgraph evk["cube:evk"]
         subgraph d1["Docker container: cube:its"]
-            cits["ITS facilities + Vanetza V2X stack"]
+            cits["ITS facilities, Vanetza, etc."]
         end
     end
     apps <-->|"ROS 2 topics & services<br/>same network, shared ROS_DOMAIN_ID"| cits
